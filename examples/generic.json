@@ -1,0 +1,28 @@
+{
+  "id": "DEMO_RELEASE",
+  "lang": "en",
+  "title": { "en": "Release decisions", "he": "החלטות שחרור" },
+  "q": [
+    {
+      "id": "Q1",
+      "t": { "en": "Q1: when should we release?", "he": "Q1: מתי לשחרר?" },
+      "x": { "en": ["All tests pass on staging.", "Two minor issues are still open."], "he": ["כל הבדיקות עוברות בסביבת staging.", "שתי תקלות קטנות עדיין פתוחות."] },
+      "o": [
+        { "k": "today", "r": 1, "l": { "en": "Today", "he": "היום" }, "d": { "en": "Ship now, fix minor issues next week", "he": "לשחרר עכשיו, לתקן בשבוע הבא" },
+          "x": { "en": ["Fastest value to users", "Minor issues are cosmetic"], "he": ["ערך מהיר למשתמשים", "התקלות קוסמטיות"] } },
+        { "k": "next_week", "l": { "en": "Next week", "he": "בשבוע הבא" }, "d": { "en": "Fix everything first", "he": "לתקן הכל קודם" } }
+      ]
+    },
+    {
+      "id": "Q2",
+      "m": 1,
+      "b": 0,
+      "t": { "en": "Q2: who should be notified?", "he": "Q2: את מי לעדכן?" },
+      "o": [
+        { "k": "team", "r": 1, "l": { "en": "Team channel", "he": "ערוץ הצוות" } },
+        { "k": "customers", "l": { "en": "Customers (email)", "he": "לקוחות (מייל)" } },
+        { "k": "support", "l": { "en": "Support desk", "he": "מוקד התמיכה" } }
+      ]
+    }
+  ]
+}
