@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AiDecisionCard</title>
+<meta name="robots" content="noindex">
+<style>html,body{margin:0;background:#fff;color:#1b1f24;color-scheme:light}body{padding:16px 24px 40px;font:14px/1.5 -apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}h1{font-size:20px;font-weight:700;margin:0 0 4px}.meta{font-size:12px;color:#5b6672;margin-bottom:12px}a{color:#0b5cad}</style>
+</head><body>
+<h1 id="h">AiDecisionCard</h1>
+<div class="meta" id="m">Card data travels only in this link's <code>#</code> part, which browsers never send to any server.</div>
+<div id="q"></div>
+<script src="ai-decision-card.js"></script>
+<script>
+(function () {
+  var api = null;
+  try { api = AiDecisionCard.fromHash(location.hash, { target: "#q", viewer: false }); } catch (e) {
+    document.getElementById("q").textContent = "This link's card data could not be read: " + e.message;
+  }
+  if (!api && !document.getElementById("q").textContent) {
+    document.getElementById("q").innerHTML = 'No card in this link. See <a href="https://github.com/AlexBrs/ai-decision-collapsible-gen-card">the repository</a> for how to create one.';
+  }
+  var t = document.querySelector(".adc .reg .t");
+  if (api && t) document.title = "Decision card - " + t.textContent;
+})();
+</script>
+</body></html>

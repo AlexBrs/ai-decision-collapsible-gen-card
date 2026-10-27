@@ -1,42 +1,188 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "ai-decision-collapsible-gen-card/input.schema.json",
-  "title": "AiDecisionCard input (v1.0.0)",
+  "title": "AiDecisionCard input (v1.1.0)",
   "description": "Passed to AiDecisionCard.render(input, opts) as an object or a JSON string.",
   "$defs": {
-    "text": { "description": "Plain string, or one string per language code.", "oneOf": [ { "type": "string" }, { "type": "object", "additionalProperties": { "type": "string" } } ] },
-    "bullets": { "description": "Explanation bullets shown in a collapsible region. Omit to hide the toggle.", "oneOf": [ { "type": "array", "items": { "type": "string" } }, { "type": "object", "additionalProperties": { "type": "array", "items": { "type": "string" } } } ] },
-    "flag": { "oneOf": [ { "type": "boolean" }, { "enum": [0, 1] } ] },
+    "text": {
+      "description": "Plain string, or one string per language code.",
+      "oneOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      ]
+    },
+    "bullets": {
+      "description": "Explanation bullets shown in a collapsible region. Omit to hide the toggle.",
+      "oneOf": [
+        {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      ]
+    },
+    "flag": {
+      "oneOf": [
+        {
+          "type": "boolean"
+        },
+        {
+          "enum": [
+            0,
+            1
+          ]
+        }
+      ]
+    },
     "option": {
-      "type": "object", "required": ["k", "l"], "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "k",
+        "l"
+      ],
+      "additionalProperties": false,
       "properties": {
-        "k": { "type": "string", "description": "Stable machine key returned in the output. Never translated. '__other' is reserved." },
-        "l": { "$ref": "#/$defs/text", "description": "Answer label." },
-        "d": { "$ref": "#/$defs/text", "description": "One-line description under the label." },
-        "x": { "$ref": "#/$defs/bullets" },
-        "r": { "$ref": "#/$defs/flag", "description": "Recommended: tagged and pre-selected." }
+        "k": {
+          "type": "string",
+          "description": "Stable machine key returned in the output. Never translated. '__other' is reserved."
+        },
+        "l": {
+          "$ref": "#/$defs/text",
+          "description": "Answer label."
+        },
+        "d": {
+          "$ref": "#/$defs/text",
+          "description": "One-line description under the label."
+        },
+        "x": {
+          "$ref": "#/$defs/bullets"
+        },
+        "r": {
+          "$ref": "#/$defs/flag",
+          "description": "Recommended: tagged and pre-selected."
+        }
       }
     },
     "question": {
-      "type": "object", "required": ["id", "t", "o"], "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "id",
+        "t",
+        "o"
+      ],
+      "additionalProperties": false,
       "properties": {
-        "id": { "type": "string", "description": "Question key returned in the output." },
-        "t": { "$ref": "#/$defs/text", "description": "Question title." },
-        "x": { "$ref": "#/$defs/bullets" },
-        "m": { "$ref": "#/$defs/flag", "description": "Multi-choice (checkboxes). Default false." },
-        "b": { "$ref": "#/$defs/flag", "description": "Blocking: an answer is required. Default true." },
-        "c": { "$ref": "#/$defs/flag", "description": "Show the 'My own answer' option with a text field. Default true." },
-        "n": { "$ref": "#/$defs/flag", "description": "Show a per-question comment box. Default true." },
-        "o": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/option" } }
+        "id": {
+          "type": "string",
+          "description": "Question key returned in the output."
+        },
+        "t": {
+          "$ref": "#/$defs/text",
+          "description": "Question title."
+        },
+        "x": {
+          "$ref": "#/$defs/bullets"
+        },
+        "m": {
+          "$ref": "#/$defs/flag",
+          "description": "Multi-choice (checkboxes). Default false."
+        },
+        "b": {
+          "$ref": "#/$defs/flag",
+          "description": "Blocking: an answer is required. Default true."
+        },
+        "c": {
+          "$ref": "#/$defs/flag",
+          "description": "Show the 'My own answer' option with a text field. Default true."
+        },
+        "n": {
+          "$ref": "#/$defs/flag",
+          "description": "Show a per-question comment box. Default true."
+        },
+        "o": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/option"
+          }
+        },
+        "a": {
+          "$ref": "#/$defs/flag",
+          "description": "Attach buttons for this question (comment area) and its selected answers. Default true."
+        }
       }
     }
   },
-  "type": "object", "required": ["q"],
+  "type": "object",
+  "required": [
+    "q"
+  ],
   "properties": {
-    "id": { "type": "string", "description": "Card id, echoed in the output." },
-    "lang": { "type": "string", "description": "Display language code; 'en' and 'he' (RTL) built in. Default 'en'." },
-    "title": { "$ref": "#/$defs/text", "description": "Optional; used by render.js as the page heading." },
-    "strings": { "type": "object", "description": "Per-language UI string overrides or new languages (must include 'dir' for a new language).", "additionalProperties": { "type": "object", "additionalProperties": { "type": "string" } } },
-    "q": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/question" } }
+    "id": {
+      "type": "string",
+      "description": "Card id, echoed in the output."
+    },
+    "lang": {
+      "type": "string",
+      "description": "Display language code; 'en' and 'he' (RTL) built in. Default 'en'."
+    },
+    "title": {
+      "$ref": "#/$defs/text",
+      "description": "Optional; used by render.js as the page heading."
+    },
+    "strings": {
+      "type": "object",
+      "description": "Per-language UI string overrides or new languages (must include 'dir' for a new language).",
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "string"
+        }
+      }
+    },
+    "q": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/question"
+      }
+    },
+    "a": {
+      "$ref": "#/$defs/flag",
+      "description": "Card-level attach button next to Summary comments. Default true."
+    },
+    "viewer": {
+      "oneOf": [
+        {
+          "type": "string",
+          "description": "Viewer page URL for 'Open in browser'."
+        },
+        {
+          "const": false,
+          "description": "Hide 'Open in browser'."
+        }
+      ]
+    },
+    "inbox": {
+      "type": "string",
+      "description": "Optional display path of the inbox folder, shown in the 'Saved to …' message of the browser page."
+    }
   }
 }

@@ -1,35 +1,169 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "ai-decision-collapsible-gen-card/output.schema.json",
-  "title": "AiDecisionCard output (v1.0.0)",
-  "description": "Produced on 'Send answers'. Same structure as the AB decision-form export (12/08/2026), plus engine, lang, multi and own_answer. Inline mode posts a readable line followed by this JSON in a ```json block; standalone mode shows it with Copy/Download JSON + Markdown; onSubmit receives {line, json}.",
+  "title": "AiDecisionCard output (v1.1.0)",
+  "description": "Produced on 'Send answers'. Same structure as the AB decision-form export (12/08/2026), plus engine, lang, multi and own_answer. Inline mode posts a readable line followed by this JSON in a ```json block; standalone mode saves answers.json, answers.md and the attached files into a chosen inbox folder (fallback: downloads); onSubmit receives {line, json}.",
   "type": "object",
-  "required": ["artifact_id", "engine", "lang", "exported_at", "answers", "summary_comments", "missing_blocking"],
+  "required": [
+    "artifact_id",
+    "engine",
+    "lang",
+    "exported_at",
+    "answers",
+    "attachments",
+    "summary_comments",
+    "missing_blocking"
+  ],
   "additionalProperties": false,
   "properties": {
-    "artifact_id": { "type": "string", "description": "Input id." },
-    "engine": { "type": "string", "description": "e.g. 'AiDecisionCard 1.0.0'." },
-    "lang": { "type": "string", "description": "Language the card was shown in." },
-    "exported_at": { "type": "string", "format": "date-time" },
+    "artifact_id": {
+      "type": "string",
+      "description": "Input id."
+    },
+    "engine": {
+      "type": "string",
+      "description": "e.g. 'AiDecisionCard 1.0.0'."
+    },
+    "lang": {
+      "type": "string",
+      "description": "Language the card was shown in."
+    },
+    "exported_at": {
+      "type": "string",
+      "format": "date-time"
+    },
     "answers": {
       "type": "object",
       "description": "One entry per question id.",
       "additionalProperties": {
         "type": "object",
-        "required": ["question", "blocking", "multi", "answer", "answer_label", "own_answer", "notes"],
+        "required": [
+          "question",
+          "blocking",
+          "multi",
+          "answer",
+          "answer_label",
+          "own_answer",
+          "notes"
+        ],
         "additionalProperties": false,
         "properties": {
-          "question": { "type": "string", "description": "Question title as displayed." },
-          "blocking": { "type": "boolean" },
-          "multi": { "type": "boolean" },
-          "answer": { "description": "Option key (single), array of keys (multi), or null. '__other' = own answer.", "oneOf": [ { "type": "string" }, { "type": "null" }, { "type": "array", "items": { "type": "string" } } ] },
-          "answer_label": { "description": "Displayed label(s) matching 'answer', in the display language.", "oneOf": [ { "type": "string" }, { "type": "null" }, { "type": "array", "items": { "type": "string" } } ] },
-          "own_answer": { "type": "string", "description": "Text typed for 'My own answer'; empty when not chosen." },
-          "notes": { "type": "string", "description": "Per-question comment; empty when not filled." }
+          "question": {
+            "type": "string",
+            "description": "Question title as displayed."
+          },
+          "blocking": {
+            "type": "boolean"
+          },
+          "multi": {
+            "type": "boolean"
+          },
+          "answer": {
+            "description": "Option key (single), array of keys (multi), or null. '__other' = own answer.",
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "answer_label": {
+            "description": "Displayed label(s) matching 'answer', in the display language.",
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "own_answer": {
+            "type": "string",
+            "description": "Text typed for 'My own answer'; empty when not chosen."
+          },
+          "notes": {
+            "type": "string",
+            "description": "Per-question comment; empty when not filled."
+          }
         }
       }
     },
-    "summary_comments": { "type": "string" },
-    "missing_blocking": { "type": "array", "items": { "type": "string" }, "description": "Blocking question ids left unanswered (always empty when sent from the card, since sending is blocked)." }
+    "attachments": {
+      "type": "array",
+      "description": "Files picked with Attach or pasted with Ctrl+V. File content is never inside the JSON.",
+      "items": {
+        "type": "object",
+        "required": [
+          "level",
+          "name",
+          "size",
+          "type",
+          "delivery"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "level": {
+            "enum": [
+              "card",
+              "question",
+              "answer"
+            ]
+          },
+          "question": {
+            "type": "string"
+          },
+          "answer": {
+            "type": "string",
+            "description": "Option key (level 'answer' only; dropped if that answer is deselected)."
+          },
+          "name": {
+            "type": "string"
+          },
+          "size": {
+            "type": "integer"
+          },
+          "type": {
+            "type": "string"
+          },
+          "delivery": {
+            "enum": [
+              "chat",
+              "inbox",
+              "download"
+            ],
+            "description": "chat: user pastes/drops the file into the chat after Send; inbox: saved next to answers.json; download: browser downloads."
+          },
+          "saved_as": {
+            "type": "string",
+            "description": "Path relative to the inbox folder (delivery 'inbox')."
+          }
+        }
+      }
+    },
+    "summary_comments": {
+      "type": "string"
+    },
+    "missing_blocking": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Blocking question ids left unanswered (always empty when sent from the card, since sending is blocked)."
+    }
   }
 }
