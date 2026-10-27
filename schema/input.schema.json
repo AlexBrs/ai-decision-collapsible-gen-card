@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "ai-decision-collapsible-gen-card/input.schema.json",
-  "title": "AiDecisionCard input (v1.1.0)",
+  "title": "AiDecisionCard input (v1.2.0)",
   "description": "Passed to AiDecisionCard.render(input, opts) as an object or a JSON string.",
   "$defs": {
     "text": {
@@ -77,6 +77,15 @@
         "r": {
           "$ref": "#/$defs/flag",
           "description": "Recommended: tagged and pre-selected."
+        },
+        "v": {
+          "$ref": "#/$defs/visual"
+        },
+        "s": {
+          "type": "number",
+          "minimum": 1,
+          "maximum": 10,
+          "description": "Rating 1-10 shown as a badge: >=8 green ✓, 5-7 amber ●, <=4 red ✕."
         }
       }
     },
@@ -102,7 +111,7 @@
         },
         "m": {
           "$ref": "#/$defs/flag",
-          "description": "Multi-choice (checkboxes). Default false."
+          "description": "Multi-choice (checkboxes). Default false. Selected answers get a details box (comment + attach) behind the left toggle."
         },
         "b": {
           "$ref": "#/$defs/flag",
@@ -125,9 +134,26 @@
         },
         "a": {
           "$ref": "#/$defs/flag",
-          "description": "Attach buttons for this question (comment area) and its selected answers. Default true."
+          "description": "Attach buttons for this question; on multi-choice questions also inside each selected answer's details box. Default true."
+        },
+        "v": {
+          "$ref": "#/$defs/visual"
         }
       }
+    },
+    "visual": {
+      "description": "Visual shown before a question title or answer label: 'i:<name>' built-in icon (tray, file, zip, save, share, plane, check, reply, note, info, warn, star, mail, db, mic, clip, paste, scr, ext), 'p:<path d>' 24x24 SVG path (sanitised), or an https:// image URL.",
+      "oneOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      ]
     }
   },
   "type": "object",
@@ -145,7 +171,7 @@
     },
     "title": {
       "$ref": "#/$defs/text",
-      "description": "Optional; used by render.js as the page heading."
+      "description": "Card title, shown in the card header (and as the page title in the viewer / render.js)."
     },
     "strings": {
       "type": "object",
@@ -180,9 +206,17 @@
         }
       ]
     },
-    "inbox": {
+    "ref": {
       "type": "string",
-      "description": "Optional display path of the inbox folder, shown in the 'Saved to …' message of the browser page."
+      "description": "Reference ID shown under the title and echoed as card_ref, e.g. AB_20261027_2310_ADC_TOPIC."
+    },
+    "who": {
+      "$ref": "#/$defs/flag",
+      "description": "Multi-user card: the respondent's name/ID is required and goes into respondent + the ZIP name. Default false."
+    },
+    "confirm": {
+      "$ref": "#/$defs/flag",
+      "description": "Chat cards: show 'Ready to submit' before sending. Default: only when the card has 2+ questions. The browser page always confirms (file name)."
     }
   }
 }

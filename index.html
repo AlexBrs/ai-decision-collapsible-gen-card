@@ -7,18 +7,21 @@
 <h1 id="h">AiDecisionCard</h1>
 <div class="meta" id="m">Card data travels only in this link's <code>#</code> part, which browsers never send to any server.</div>
 <div id="q"></div>
-<script src="ai-decision-card.js"></script>
 <script>
 (function () {
-  var api = null;
-  try { api = AiDecisionCard.fromHash(location.hash, { target: "#q", viewer: false }); } catch (e) {
-    document.getElementById("q").textContent = "This link's card data could not be read: " + e.message;
+  var m = /[#&]v=([0-9A-Za-z.\-]+)/.exec(location.hash), v = m && m[1], done = false;
+  function load(src, fail) { var s = document.createElement("script"); s.src = src; s.onload = start; s.onerror = fail; document.head.appendChild(s); }
+  function start() {
+    if (done) return; done = true;
+    var api = null, q = document.getElementById("q");
+    try { api = AiDecisionCard.fromHash(location.hash, { target: "#q", viewer: false }); } catch (e) { q.textContent = "This link's card data could not be read: " + e.message; }
+    if (!api && !q.textContent) q.innerHTML = 'No card in this link. See <a href="https://github.com/AlexBrs/ai-decision-collapsible-gen-card">the repository</a> for how to create one.';
+    var hd = document.querySelector(".adc .hdr b"), t = hd || document.querySelector(".adc .reg .t");
+    if (api && t) document.title = (hd ? "" : "Decision card - ") + t.textContent;
+    if (api && document.querySelector(".adc .hdr")) document.getElementById("h").hidden = true;
   }
-  if (!api && !document.getElementById("q").textContent) {
-    document.getElementById("q").innerHTML = 'No card in this link. See <a href="https://github.com/AlexBrs/ai-decision-collapsible-gen-card">the repository</a> for how to create one.';
-  }
-  var t = document.querySelector(".adc .reg .t");
-  if (api && t) document.title = "Decision card - " + t.textContent;
+  if (v) load("https://cdn.jsdelivr.net/gh/AlexBrs/ai-decision-collapsible-gen-card@v" + v + "/ai-decision-card.js", function () { load("ai-decision-card.js"); });
+  else load("ai-decision-card.js");
 })();
 </script>
 </body></html>

@@ -1,5 +1,20 @@
 # **Changelog**
 
+## **v1.2.0 — 2026-10-27**
+
+- Browser page: **Export answers (ZIP)** downloads ONE ZIP — answers.json, answers.md and the real files (folder picker removed). Store-only ZIP, UTF-8 names; opens in Windows Explorer, tar and Expand-Archive.
+- Two-step dialogs: **Required information missing** (name/ID box, Go to Qx) → **Ready to export / Ready to submit** summary (card, reference, respondent, answered, files, microphone) with an editable **File name**, OK / Cancel / ✕. Chat cards with one question submit at once (`confirm` overrides).
+- Chat cards: button **Submit to Claude** (paper plane); browser page: **Export answers (ZIP)** (archive icon).
+- Multi-user cards (`who`): required **Your name / ID** → `respondent` and the ZIP name. Red ✱ marks every required item.
+- Submit stops a running dictation first and keeps its last words.
+- Screenshots: **Paste screenshot** and **Capture screen** buttons; Ctrl+V attaches to the focused box (answer details, own answer, question, card).
+- Hover thumbnail + click-to-enlarge preview for attached images. Identical files are skipped anywhere in the card, with a note saying where they already are.
+- Single-choice questions: no per-answer Attach (the question's covers it). Multi-choice: one left toggle opens the answer's explanation **and** a details box (comment, Dictate, Attach, Paste, Capture) → `answer_notes`; a dot shows when it holds content.
+- New input keys: `title` + `ref` (card header, `card_ref` in output), `v` visuals (built-in icons, SVG path, https image), `s` rating badge (1-10), `who`, `confirm`. Removed: `inbox`.
+- Viewer page loads the engine version named in the link (`#v=`), falls back to the bundled engine; the card title replaces the generic heading.
+- `render.js --multi`; the page header now comes from the card itself.
+- Fixes: Hebrew summary values aligned and bidi-safe; the export status survives redraws.
+
 ## **v1.1.0 — 2026-10-27**
 
 - All comment fields are multi-line textareas: auto-grow, vertical resize corner; Enter / Shift+Enter = new line, Ctrl+Enter = send.

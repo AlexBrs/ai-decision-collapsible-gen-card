@@ -1,8 +1,8 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "ai-decision-collapsible-gen-card/output.schema.json",
-  "title": "AiDecisionCard output (v1.1.0)",
-  "description": "Produced on 'Send answers'. Same structure as the AB decision-form export (12/08/2026), plus engine, lang, multi and own_answer. Inline mode posts a readable line followed by this JSON in a ```json block; standalone mode saves answers.json, answers.md and the attached files into a chosen inbox folder (fallback: downloads); onSubmit receives {line, json}.",
+  "title": "AiDecisionCard output (v1.2.0)",
+  "description": "Produced on submit. Chat cards post a readable line followed by this JSON in a ```json block; the browser page downloads ONE ZIP (answers.json, answers.md, files/*) named <id>[_<name>]_<YYYYMMDD_HHMMSS>.zip (editable before export); onSubmit receives {line, json}.",
   "type": "object",
   "required": [
     "artifact_id",
@@ -99,6 +99,13 @@
           "notes": {
             "type": "string",
             "description": "Per-question comment; empty when not filled."
+          },
+          "answer_notes": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "description": "Multi-choice only: comment per selected answer key, when filled."
           }
         }
       }
@@ -129,7 +136,7 @@
           },
           "answer": {
             "type": "string",
-            "description": "Option key (level 'answer' only; dropped if that answer is deselected)."
+            "description": "Option key (level 'answer': multi-choice details box; dropped if that answer is deselected)."
           },
           "name": {
             "type": "string"
@@ -143,14 +150,13 @@
           "delivery": {
             "enum": [
               "chat",
-              "inbox",
-              "download"
+              "zip"
             ],
-            "description": "chat: user pastes/drops the file into the chat after Send; inbox: saved next to answers.json; download: browser downloads."
+            "description": "chat: user pastes/drops the file into the chat after submitting; zip: inside the exported ZIP at saved_as."
           },
           "saved_as": {
             "type": "string",
-            "description": "Path relative to the inbox folder (delivery 'inbox')."
+            "description": "Path inside the ZIP, e.g. files/screenshot_20261027_120000.png (delivery 'zip')."
           }
         }
       }
@@ -164,6 +170,23 @@
         "type": "string"
       },
       "description": "Blocking question ids left unanswered (always empty when sent from the card, since sending is blocked)."
+    },
+    "card_ref": {
+      "type": "string",
+      "description": "Input ref, when given."
+    },
+    "respondent": {
+      "type": "object",
+      "required": [
+        "name"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "type": "string"
+        }
+      },
+      "description": "Multi-user cards (who) only."
     }
   }
 }
