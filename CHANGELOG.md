@@ -1,5 +1,11 @@
 # **Changelog**
 
+## **v1.2.1 — 2026-10-28**
+
+- Fix: export no longer fails ("file could not be read") when an attached file is edited, moved or locked after attaching — files are kept in memory from the moment they are attached.
+- Layout: **Export answers / Submit** sits on its own line under the summary box (phones no longer squeeze the summary field).
+- New: `merge.js` — merges a folder of team ZIPs into one HTML report + merged JSON + files per person, with flags for other cards, broken ZIPs, missing or duplicate names.
+
 ## **v1.2.0 — 2026-10-27**
 
 - Browser page: **Export answers (ZIP)** downloads ONE ZIP — answers.json, answers.md and the real files (folder picker removed). Store-only ZIP, UTF-8 names; opens in Windows Explorer, tar and Expand-Archive.

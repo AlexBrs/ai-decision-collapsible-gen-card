@@ -30,7 +30,7 @@ An AI assistant passes **one JSON object**; the engine renders a compact, white 
 
 ```html
 <div id="q"></div>
-<script src="https://cdn.jsdelivr.net/gh/AlexBrs/ai-decision-collapsible-gen-card@v1.2.0/ai-decision-card.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/AlexBrs/ai-decision-collapsible-gen-card@v1.2.1/ai-decision-card.js"></script>
 <script>
 AiDecisionCard.render({
   "id": "DEMO",
@@ -49,6 +49,14 @@ node render.js examples/generic.json [--multi]
 ```
 
 Writes a self-contained HTML page (engine embedded, works offline) and opens it. `--multi` makes it a multi-user card. Answers can be copied or downloaded as JSON / Markdown. Environment: `AIDC_OUT_DIR` (output folder), `AIDC_PREFIX` (file-name prefix).
+
+## **Team answers — merge**
+
+```bash
+node merge.js <folder with the team's ZIPs> [--no-open]
+```
+
+Reads every ZIP exported from a multi-user card (`who`) and writes `_merged_<YYYYMMDD_HHMMSS>/` next to them: `REPORT_<card id>_<stamp>.html` (respondents, votes per answer with names, own answers, comments, per-answer comments, files with previews), `MERGED_<card id>_<stamp>.json` and `files/<respondent>/…`. ZIPs of another card, broken ZIPs, missing names and duplicate names are flagged in the report, never silently fixed. Store and deflate ZIPs are both read.
 
 ## **API**
 

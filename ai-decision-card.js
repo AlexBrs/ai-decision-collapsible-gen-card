@@ -1,4 +1,4 @@
-/*! ai-decision-collapsible-gen-card v1.2.0 (AiDecisionCard) | Spec: README.md | Schemas: schema/*.json
+/*! ai-decision-collapsible-gen-card v1.2.1 (AiDecisionCard) | Spec: README.md | Schemas: schema/*.json
  * Usage: AiDecisionCard.render(input, {target:"#el", mode:"inline"|"standalone", lang, onSubmit:fn, viewer:url|false, state, speechLang})
  * input: JSON object or JSON string - {id, ref?, lang, title?, strings?, a?, viewer?, who?, q:[{id, t, v?, x?, m?, b?, c?, n?, a?, o:[{k, l, v?, d?, x?, r?, s?}]}], confirm?}
  * v = visual: "i:<icon name>" built-in icon | "p:<path d>" 24x24 SVG path | "https://..." image. ref = reference ID shown under the title.
@@ -14,7 +14,7 @@
  */
 (function (g) {
 "use strict";
-var VER = "1.2.0", VIEWER = "https://alexbrs.github.io/ai-decision-collapsible-gen-card/";
+var VER = "1.2.1", VIEWER = "https://alexbrs.github.io/ai-decision-collapsible-gen-card/";
 var STR = {
  en:{dir:"ltr",expand:"Expand all",collapse:"Collapse all",rec:"Recommended",blk:"Blocking",opt:"Optional",multi:"Select all that apply",send:"Submit to Claude",exportZip:"Export answers (ZIP)",ph:"Summary comments (optional)",notes:"Comments (optional)",other:"My own answer",otherPh:"Type your answer",eO:"Type your own answer first",e1:"Choose an answer",eM:"Select at least one option",exp:"Explain",payload:"Answer payload",copy:"Copy JSON",dlj:"Download JSON",dlm:"Download Markdown",open:"Open in browser",attach:"Attach",mic:"Dictate",micOn:"Listening… click to stop",micErr:"Microphone not available here — use Windows voice typing (Win+H)",rm:"Remove",keys:"Enter = new line · Ctrl+Enter = send",winh:"Dictate: press Win+H in any box",paste:"Ctrl+V pastes a screenshot",chatFile:"after Send, paste/drop it into the chat",files:"Files",chatFiles:"Files to paste into the chat next",shotTip:"Screenshot: Win+Shift+S, then Ctrl+V into the message box",pasteShot:"Paste screenshot",capture:"Capture screen",noImg:"No image in the clipboard — press Win+Shift+S first",capErr:"Screen capture not available here",who:"Your name / ID",whoPh:"Type your name or ID",eWho:"Type your name or ID",zipping:"Preparing ZIP…",zipped:"Downloaded {f} — drop it into the chat, or send it back to whoever asked",zipErr:"ZIP failed",req:"Required",mTitleMiss:"Required information missing",mTitleSent:"Answers sent",mTitleZip:"Answers saved — ZIP downloaded",mCard:"Card",mAnswered:"Questions answered",mMissing:"Missing",mFiles:"Files",mMic:"Microphone",micStopped:"stopped",mZip:"ZIP file",mChatFiles:"Now paste or drop the attached files into the chat.",btnOk:"OK",btnBack:"Back to card",go:"Go to",dupNote:"already attached ({w}) — skipped",mTitleOkC:"Ready to submit",mTitleOkZ:"Ready to export",mFileName:"File name",btnCancel:"Cancel",cont:"Continue",close:"Close",details:"Add details",hideDetails:"Hide details",ansNote:"Comment on this answer (optional)",cardLvl:"card",sent:"Submitted to Claude",mRef:"Reference",expDet:"Explanation and details",rating:"Rating"},
  he:{dir:"rtl",expand:"הרחב הכל",collapse:"כווץ הכל",rec:"מומלץ",blk:"חוסם",opt:"אופציונלי",multi:"ניתן לבחור כמה",send:"שלח ל-Claude",exportZip:"ייצוא תשובות (ZIP)",ph:"הערות מסכמות (אופציונלי)",notes:"הערות (אופציונלי)",other:"תשובה משלי",otherPh:"הקלד את תשובתך",eO:"יש להקליד תשובה משלך",e1:"יש לבחור תשובה",eM:"יש לבחור לפחות אפשרות אחת",exp:"הסבר",payload:"תשובות",copy:"העתק JSON",dlj:"הורד JSON",dlm:"הורד Markdown",open:"פתח בדפדפן",attach:"צרף",mic:"הכתבה",micOn:"מקשיב… לחץ לעצירה",micErr:"המיקרופון לא זמין כאן — השתמש בהקלדה קולית של Windows (Win+H)",rm:"הסר",keys:"Enter = שורה חדשה · Ctrl+Enter = שליחה",winh:"הכתבה: Win+H בכל תיבה",paste:"Ctrl+V מדביק צילום מסך",chatFile:"אחרי השליחה הדבק/גרור אותו לצ'אט",files:"קבצים",chatFiles:"קבצים להדבקה בצ'אט",shotTip:"צילום מסך: Win+Shift+S ואז Ctrl+V בתיבת ההודעה",pasteShot:"הדבק צילום מסך",capture:"צלם מסך",noImg:"אין תמונה בלוח — לחץ קודם Win+Shift+S",capErr:"צילום מסך לא זמין כאן",who:"שם / מזהה",whoPh:"הקלד שם או מזהה",eWho:"יש להקליד שם או מזהה",zipping:"מכין ZIP…",zipped:"ירד הקובץ {f} — גרור אותו לצ'אט או שלח אותו בחזרה",zipErr:"יצירת ZIP נכשלה",req:"חובה",mTitleMiss:"חסר מידע נדרש",mTitleSent:"התשובות נשלחו",mTitleZip:"התשובות נשמרו — קובץ ה-ZIP ירד",mCard:"כרטיס",mAnswered:"שאלות שנענו",mMissing:"חסר",mFiles:"קבצים",mMic:"מיקרופון",micStopped:"נעצר",mZip:"קובץ ZIP",mChatFiles:"עכשיו הדבק או גרור את הקבצים לצ'אט.",btnOk:"אישור",btnBack:"חזרה לכרטיס",go:"עבור ל",dupNote:"כבר מצורף ({w}) — דולג",mTitleOkC:"מוכן לשליחה",mTitleOkZ:"מוכן לייצוא",mFileName:"שם קובץ",btnCancel:"ביטול",cont:"המשך",close:"סגור",details:"הוסף פרטים",hideDetails:"הסתר פרטים",ansNote:"הערה לתשובה זו (אופציונלי)",cardLvl:"כרטיס",sent:"נשלח ל-Claude",mRef:"הפניה",expDet:"הסבר ופרטים",rating:"דירוג"}
@@ -66,7 +66,7 @@ var CSS = [
 ".adc .hint{font-size:11px;color:var(--mu);margin-top:4px}.adc .merr{font-size:12px;color:var(--bd)}.adc .svst{font-size:13px;margin:6px 0;font-weight:600}.adc .svst.ok{color:var(--ok)}.adc .svst.w{color:var(--wn)}",
 ".adc .who{margin:0 0 12px}.adc .who b{display:block;font-size:13px;margin-bottom:4px}",
 ".adc input.wi{display:block!important;width:100%!important;max-width:100%!important;min-width:0!important;box-sizing:border-box!important;margin:0!important;padding:6px 8px!important;border:1px solid var(--ct)!important;border-radius:2px!important;background:#fff!important;color:var(--fg)!important;font-size:14px!important;height:auto!important;box-shadow:none!important;unicode-bidi:plaintext}",
-".adc .ft{display:flex;gap:10px;align-items:flex-start}.adc .ft .fw{flex:1;min-width:0}",
+".adc .ft{display:flex;gap:10px;align-items:flex-start;flex-wrap:wrap}.adc .ft .fw{flex:1 1 100%;min-width:0}.adc .ft .send{margin-inline-start:auto}",
 ".adc input[type=file]{display:none!important}",
 ".adc .out{margin-top:14px;border:1px solid var(--ru);background:var(--pa);padding:10px 12px}.adc .out h2{font-size:14px;font-weight:700;margin:0 0 6px}",
 ".adc .out pre{white-space:pre-wrap;word-break:break-word;background:#fff;border:1px solid var(--ru);padding:8px;font-size:12px;margin:0 0 8px}",
@@ -255,17 +255,20 @@ function render(data, opts) {
  }
  function digest(f) {
   var fb = function () { return f.size + ":" + f.name; };
-  if (!(g.crypto && g.crypto.subtle && f.arrayBuffer)) return Promise.resolve(fb());
-  return f.arrayBuffer().then(function (b) { return g.crypto.subtle.digest("SHA-256", b); }).then(function (h) { return [].map.call(new Uint8Array(h), function (x) { return ("0" + x.toString(16)).slice(-2); }).join(""); }).catch(fb);
+  if (!f.arrayBuffer) return Promise.resolve({ h: fb() });
+  return f.arrayBuffer().then(function (b) {
+   if (!(g.crypto && g.crypto.subtle)) return { h: fb(), b: b };
+   return g.crypto.subtle.digest("SHA-256", b).then(function (h) { return { h: [].map.call(new Uint8Array(h), function (x) { return ("0" + x.toString(16)).slice(-2); }).join(""), b: b }; }, function () { return { h: fb(), b: b }; });
+  }, function () { return { h: fb() }; });
  }
  function addFiles(t, list) {
   var p = t.split("|"), level = p[0] === "c" ? "card" : p[0] === "q" ? "question" : "answer", arr = [].slice.call(list);
   delete dupNote[t];
   return Promise.all(arr.map(digest)).then(function (hs) {
    arr.forEach(function (f, i) {
-    var dup = files.filter(function (x) { return x.hash === hs[i]; })[0];
+    var dup = files.filter(function (x) { return x.hash === hs[i].h; })[0];
     if (dup) { dupNote[t] = f.name + " — " + S.dupNote.replace("{w}", dup.answer ? dup.question + " / " + (dup.answer === OTH ? S.other : dup.answer) : (dup.question || S.cardLvl)); return; }
-    files.push({ id: ++fseq, t: t, level: level, question: p[1] || undefined, answer: p[2] || undefined, name: f.name, size: f.size, type: f.type || "", file: f, hash: hs[i] });
+    files.push({ id: ++fseq, t: t, level: level, question: p[1] || undefined, answer: p[2] || undefined, name: f.name, size: f.size, type: f.type || "", file: hs[i].b ? new File([hs[i].b], f.name, { type: f.type || "" }) : f, hash: hs[i].h });
    });
    draw();
   });
