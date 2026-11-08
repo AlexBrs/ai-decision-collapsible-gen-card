@@ -1,5 +1,9 @@
 # **Changelog**
 
+## **v1.2.4 — 2026-11-08**
+
+- File names start with **AiDecisionCard_**: Save as HTML file `AiDecisionCard_<card id>_<YYYYMMDD>_<HHMMSS>.html`; exported ZIP default `AiDecisionCard_<card id>[_<respondent>]_<YYYYMMDD>_<HHMMSS>.zip`; `render.js` page `AiDecisionCard_<card id>_<YYYYMMDD>_<HHMMSS>.html` (seconds added; `AIDC_PREFIX` overrides the prefix, empty = none).
+
 ## **v1.2.3 - 2026-11-08**
 
 - Fix: **Open in browser** no longer silently does nothing on a long card. The link now carries the card deflate-compressed (`#z=`) instead of raw base64 (`#d=`) - a seven-question card measured 17,326 characters before and 7,562 after. `fromHash` reads `z=` first and still accepts `d=`, so every link made by an earlier version keeps working.

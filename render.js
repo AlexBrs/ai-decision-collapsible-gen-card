@@ -3,7 +3,7 @@
  * Usage: node render.js <card.json> [out.html] [--no-open] [--multi]
  * --multi = multi-user card: asks the respondent's name/ID (sets who:1)
  * Builds a self-contained white HTML page (engine embedded, no network) and opens it in the default browser.
- * Defaults: output folder = AIDC_OUT_DIR or the input file's folder; file name = <AIDC_PREFIX><YYYYMMDD>_<HHMM>_<card id>.html
+ * Defaults: output folder = AIDC_OUT_DIR or the input file's folder; file name = <AIDC_PREFIX, default "AiDecisionCard_"><card id>_<YYYYMMDD>_<HHMMSS>.html
  */
 "use strict";
 const fs = require("fs"), path = require("path"), cp = require("child_process");
@@ -17,9 +17,9 @@ for (const q of data.q) {
 }
 const engine = fs.readFileSync(path.join(__dirname, "ai-decision-card.js"), "utf8");
 const d = new Date(), p2 = n => String(n).padStart(2, "0");
-const ts = d.getFullYear() + p2(d.getMonth() + 1) + p2(d.getDate()) + "_" + p2(d.getHours()) + p2(d.getMinutes());
+const ts = d.getFullYear() + p2(d.getMonth() + 1) + p2(d.getDate()) + "_" + p2(d.getHours()) + p2(d.getMinutes()) + p2(d.getSeconds());
 const safeId = String(data.id || "CARD").replace(/[^A-Za-z0-9_-]/g, "_");
-const pageId = (process.env.AIDC_PREFIX || "") + ts + "_" + safeId;
+const pageId = (process.env.AIDC_PREFIX ?? "AiDecisionCard_") + safeId + "_" + ts;
 const out = pos[1] || path.join(process.env.AIDC_OUT_DIR || path.dirname(path.resolve(pos[0])), pageId + ".html");
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 const title = typeof data.title === "string" ? data.title : (data.title && (data.title[data.lang] || data.title.en)) || ("Decision card " + safeId);

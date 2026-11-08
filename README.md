@@ -30,7 +30,7 @@ An AI assistant passes **one JSON object**; the engine renders a compact, white 
 
 ```html
 <div id="q"></div>
-<script src="https://cdn.jsdelivr.net/gh/AlexBrs/ai-decision-collapsible-gen-card@v1.2.3/ai-decision-card.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/AlexBrs/ai-decision-collapsible-gen-card@v1.2.4/ai-decision-card.js"></script>
 <script>
 AiDecisionCard.render({
   "id": "DEMO",
@@ -48,7 +48,7 @@ In an environment that provides `sendPrompt(text)` (e.g. Claude inline widgets),
 node render.js examples/generic.json [--multi]
 ```
 
-Writes a self-contained HTML page (engine embedded, works offline) and opens it. `--multi` makes it a multi-user card. Answers can be copied or downloaded as JSON / Markdown. Environment: `AIDC_OUT_DIR` (output folder), `AIDC_PREFIX` (file-name prefix).
+Writes a self-contained HTML page (engine embedded, works offline) and opens it. `--multi` makes it a multi-user card. Answers can be copied or downloaded as JSON / Markdown. Environment: `AIDC_OUT_DIR` (output folder), `AIDC_PREFIX` (file-name prefix, default `AiDecisionCard_`; empty = none).
 
 ## **Team answers — merge**
 
