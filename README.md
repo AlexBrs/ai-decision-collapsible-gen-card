@@ -30,7 +30,7 @@ An AI assistant passes **one JSON object**; the engine renders a compact, white 
 
 ```html
 <div id="q"></div>
-<script src="https://cdn.jsdelivr.net/gh/AlexBrs/ai-decision-collapsible-gen-card@v1.2.2/ai-decision-card.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/AlexBrs/ai-decision-collapsible-gen-card@v1.2.3/ai-decision-card.js"></script>
 <script>
 AiDecisionCard.render({
   "id": "DEMO",

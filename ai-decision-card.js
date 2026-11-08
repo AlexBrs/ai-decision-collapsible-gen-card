@@ -14,10 +14,11 @@
  */
 (function (g) {
 "use strict";
-var VER = "1.2.2", VIEWER = "https://alexbrs.github.io/ai-decision-collapsible-gen-card/";
+var ME = typeof document !== "undefined" && document.currentScript, ME_SRC = ME && ME.src || "", ME_TXT = ME && !ME.src ? ME.textContent : "";
+var VER = "1.2.3", VIEWER = "https://alexbrs.github.io/ai-decision-collapsible-gen-card/";
 var STR = {
- en:{dir:"ltr",expand:"Expand all",collapse:"Collapse all",rec:"Recommended",blk:"Blocking",opt:"Optional",multi:"Select all that apply",send:"Submit to Claude",exportZip:"Export answers (ZIP)",ph:"Summary comments (optional)",notes:"Comments (optional)",other:"My own answer",otherPh:"Type your answer",eO:"Type your own answer first",e1:"Choose an answer",eM:"Select at least one option",exp:"Explain",payload:"Answer payload",copy:"Copy JSON",dlj:"Download JSON",dlm:"Download Markdown",open:"Open in browser",attach:"Attach",mic:"Dictate",micOn:"Listening… click to stop",micErr:"Microphone not available here — use Windows voice typing (Win+H)",rm:"Remove",keys:"Enter = new line · Ctrl+Enter = send",winh:"Dictate: press Win+H in any box",paste:"Ctrl+V pastes a screenshot",chatFile:"after Send, paste/drop it into the chat",files:"Files",chatFiles:"Files to paste into the chat next",shotTip:"Screenshot: Win+Shift+S, then Ctrl+V into the message box",pasteShot:"Paste screenshot",capture:"Capture screen",noImg:"No image in the clipboard — press Win+Shift+S first",capErr:"Screen capture not available here",who:"Your name / ID",whoPh:"Type your name or ID",eWho:"Type your name or ID",zipping:"Preparing ZIP…",zipped:"Downloaded {f} — drop it into the chat, or send it back to whoever asked",zipErr:"ZIP failed",req:"Required",mTitleMiss:"Required information missing",mTitleSent:"Answers sent",mTitleZip:"Answers saved — ZIP downloaded",mCard:"Card",mAnswered:"Questions answered",mMissing:"Missing",mFiles:"Files",mMic:"Microphone",micStopped:"stopped",mZip:"ZIP file",mChatFiles:"Now paste or drop the attached files into the chat.",btnOk:"OK",btnBack:"Back to card",go:"Go to",dupNote:"already attached ({w}) — skipped",mTitleOkC:"Ready to submit",mTitleOkZ:"Ready to export",mFileName:"File name",btnCancel:"Cancel",cont:"Continue",close:"Close",details:"Add details",hideDetails:"Hide details",ansNote:"Comment on this answer (optional)",cardLvl:"card",sent:"Submitted to Claude",mRef:"AiDecisionCard",expDet:"Explanation and details",rating:"Rating"},
- he:{dir:"rtl",expand:"הרחב הכל",collapse:"כווץ הכל",rec:"מומלץ",blk:"חוסם",opt:"אופציונלי",multi:"ניתן לבחור כמה",send:"שלח ל-Claude",exportZip:"ייצוא תשובות (ZIP)",ph:"הערות מסכמות (אופציונלי)",notes:"הערות (אופציונלי)",other:"תשובה משלי",otherPh:"הקלד את תשובתך",eO:"יש להקליד תשובה משלך",e1:"יש לבחור תשובה",eM:"יש לבחור לפחות אפשרות אחת",exp:"הסבר",payload:"תשובות",copy:"העתק JSON",dlj:"הורד JSON",dlm:"הורד Markdown",open:"פתח בדפדפן",attach:"צרף",mic:"הכתבה",micOn:"מקשיב… לחץ לעצירה",micErr:"המיקרופון לא זמין כאן — השתמש בהקלדה קולית של Windows (Win+H)",rm:"הסר",keys:"Enter = שורה חדשה · Ctrl+Enter = שליחה",winh:"הכתבה: Win+H בכל תיבה",paste:"Ctrl+V מדביק צילום מסך",chatFile:"אחרי השליחה הדבק/גרור אותו לצ'אט",files:"קבצים",chatFiles:"קבצים להדבקה בצ'אט",shotTip:"צילום מסך: Win+Shift+S ואז Ctrl+V בתיבת ההודעה",pasteShot:"הדבק צילום מסך",capture:"צלם מסך",noImg:"אין תמונה בלוח — לחץ קודם Win+Shift+S",capErr:"צילום מסך לא זמין כאן",who:"שם / מזהה",whoPh:"הקלד שם או מזהה",eWho:"יש להקליד שם או מזהה",zipping:"מכין ZIP…",zipped:"ירד הקובץ {f} — גרור אותו לצ'אט או שלח אותו בחזרה",zipErr:"יצירת ZIP נכשלה",req:"חובה",mTitleMiss:"חסר מידע נדרש",mTitleSent:"התשובות נשלחו",mTitleZip:"התשובות נשמרו — קובץ ה-ZIP ירד",mCard:"כרטיס",mAnswered:"שאלות שנענו",mMissing:"חסר",mFiles:"קבצים",mMic:"מיקרופון",micStopped:"נעצר",mZip:"קובץ ZIP",mChatFiles:"עכשיו הדבק או גרור את הקבצים לצ'אט.",btnOk:"אישור",btnBack:"חזרה לכרטיס",go:"עבור ל",dupNote:"כבר מצורף ({w}) — דולג",mTitleOkC:"מוכן לשליחה",mTitleOkZ:"מוכן לייצוא",mFileName:"שם קובץ",btnCancel:"ביטול",cont:"המשך",close:"סגור",details:"הוסף פרטים",hideDetails:"הסתר פרטים",ansNote:"הערה לתשובה זו (אופציונלי)",cardLvl:"כרטיס",sent:"נשלח ל-Claude",mRef:"AiDecisionCard",expDet:"הסבר ופרטים",rating:"דירוג"}
+ en:{dir:"ltr",expand:"Expand all",collapse:"Collapse all",rec:"Recommended",blk:"Blocking",opt:"Optional",multi:"Select all that apply",send:"Submit to Claude",exportZip:"Export answers (ZIP)",ph:"Summary comments (optional)",notes:"Comments (optional)",other:"My own answer",otherPh:"Type your answer",eO:"Type your own answer first",e1:"Choose an answer",eM:"Select at least one option",exp:"Explain",payload:"Answer payload",copy:"Copy JSON",dlj:"Download JSON",dlm:"Download Markdown",open:"Open in browser",attach:"Attach",mic:"Dictate",micOn:"Listening… click to stop",micErr:"Microphone not available here — use Windows voice typing (Win+H)",rm:"Remove",keys:"Enter = new line · Ctrl+Enter = send",winh:"Dictate: press Win+H in any box",paste:"Ctrl+V pastes a screenshot",chatFile:"after Send, paste/drop it into the chat",files:"Files",chatFiles:"Files to paste into the chat next",shotTip:"Screenshot: Win+Shift+S, then Ctrl+V into the message box",pasteShot:"Paste screenshot",capture:"Capture screen",noImg:"No image in the clipboard — press Win+Shift+S first",capErr:"Screen capture not available here",who:"Your name / ID",whoPh:"Type your name or ID",eWho:"Type your name or ID",zipping:"Preparing ZIP…",zipped:"Downloaded {f} — drop it into the chat, or send it back to whoever asked",zipErr:"ZIP failed",req:"Required",mTitleMiss:"Required information missing",mTitleSent:"Answers sent",mTitleZip:"Answers saved — ZIP downloaded",mCard:"Card",mAnswered:"Questions answered",mMissing:"Missing",mFiles:"Files",mMic:"Microphone",micStopped:"stopped",mZip:"ZIP file",mChatFiles:"Now paste or drop the attached files into the chat.",btnOk:"OK",btnBack:"Back to card",go:"Go to",dupNote:"already attached ({w}) — skipped",mTitleOkC:"Ready to submit",mTitleOkZ:"Ready to export",mFileName:"File name",btnCancel:"Cancel",cont:"Continue",close:"Close",details:"Add details",hideDetails:"Hide details",ansNote:"Comment on this answer (optional)",cardLvl:"card",sent:"Submitted to Claude",mRef:"AiDecisionCard",expDet:"Explanation and details",rating:"Rating",saveHtml:"Save as HTML file",saving:"Preparing HTML…",savedHtml:"Downloaded {f} — send it to anyone; it opens offline (attached files are not included)",saveErr:"Saving failed",savedHtmlNet:"Downloaded {f} — send it to anyone; it opens with internet (attached files are not included)",winhBtn:"Dictate = Win+H",winhTip:"Click, then press Win+H to dictate into this box"},
+ he:{dir:"rtl",expand:"הרחב הכל",collapse:"כווץ הכל",rec:"מומלץ",blk:"חוסם",opt:"אופציונלי",multi:"ניתן לבחור כמה",send:"שלח ל-Claude",exportZip:"ייצוא תשובות (ZIP)",ph:"הערות מסכמות (אופציונלי)",notes:"הערות (אופציונלי)",other:"תשובה משלי",otherPh:"הקלד את תשובתך",eO:"יש להקליד תשובה משלך",e1:"יש לבחור תשובה",eM:"יש לבחור לפחות אפשרות אחת",exp:"הסבר",payload:"תשובות",copy:"העתק JSON",dlj:"הורד JSON",dlm:"הורד Markdown",open:"פתח בדפדפן",attach:"צרף",mic:"הכתבה",micOn:"מקשיב… לחץ לעצירה",micErr:"המיקרופון לא זמין כאן — השתמש בהקלדה קולית של Windows (Win+H)",rm:"הסר",keys:"Enter = שורה חדשה · Ctrl+Enter = שליחה",winh:"הכתבה: Win+H בכל תיבה",paste:"Ctrl+V מדביק צילום מסך",chatFile:"אחרי השליחה הדבק/גרור אותו לצ'אט",files:"קבצים",chatFiles:"קבצים להדבקה בצ'אט",shotTip:"צילום מסך: Win+Shift+S ואז Ctrl+V בתיבת ההודעה",pasteShot:"הדבק צילום מסך",capture:"צלם מסך",noImg:"אין תמונה בלוח — לחץ קודם Win+Shift+S",capErr:"צילום מסך לא זמין כאן",who:"שם / מזהה",whoPh:"הקלד שם או מזהה",eWho:"יש להקליד שם או מזהה",zipping:"מכין ZIP…",zipped:"ירד הקובץ {f} — גרור אותו לצ'אט או שלח אותו בחזרה",zipErr:"יצירת ZIP נכשלה",req:"חובה",mTitleMiss:"חסר מידע נדרש",mTitleSent:"התשובות נשלחו",mTitleZip:"התשובות נשמרו — קובץ ה-ZIP ירד",mCard:"כרטיס",mAnswered:"שאלות שנענו",mMissing:"חסר",mFiles:"קבצים",mMic:"מיקרופון",micStopped:"נעצר",mZip:"קובץ ZIP",mChatFiles:"עכשיו הדבק או גרור את הקבצים לצ'אט.",btnOk:"אישור",btnBack:"חזרה לכרטיס",go:"עבור ל",dupNote:"כבר מצורף ({w}) — דולג",mTitleOkC:"מוכן לשליחה",mTitleOkZ:"מוכן לייצוא",mFileName:"שם קובץ",btnCancel:"ביטול",cont:"המשך",close:"סגור",details:"הוסף פרטים",hideDetails:"הסתר פרטים",ansNote:"הערה לתשובה זו (אופציונלי)",cardLvl:"כרטיס",sent:"נשלח ל-Claude",mRef:"AiDecisionCard",expDet:"הסבר ופרטים",rating:"דירוג",saveHtml:"שמור כקובץ HTML",saving:"מכין HTML…",savedHtml:"ירד הקובץ {f} — אפשר לשלוח לכל אחד; נפתח גם בלי אינטרנט (קבצים מצורפים לא נכללים)",saveErr:"השמירה נכשלה",savedHtmlNet:"ירד הקובץ {f} — אפשר לשלוח לכל אחד; נפתח עם אינטרנט (קבצים מצורפים לא נכללים)",winhBtn:"הכתבה = Win+H",winhTip:"לחץ ואז Win+H כדי להכתיב לתיבה זו"}
 };
 var CSS = [
 ".adc{--bg:#fff;--fg:#1b1f24;--mu:#5b6672;--ru:#d8dee6;--ct:#c9d1db;--pa:#f6f8fa;--p2:#e3e8ee;--ac:#0b5cad;--as:#e7f0fa;--ok:#2e7d32;--bd:#b3261e;--bb:#fdecec;--wn:#8a5a00;color-scheme:light;background:var(--bg);color:var(--fg);font:14px/1.5 -apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;padding:12px;border-radius:4px;box-sizing:border-box}",
@@ -83,7 +84,7 @@ var CSS = [
 var ICO = {"tray":"M5 20h14v-2H5v2zm14-11h-4V3H9v6H5l7 7 7-7z","file":"M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm-2 16l-4-4h3v-4h2v4h3l-4 4zm1-9V3.5L18.5 9H13z","zip":"M20.54 5.23l-1.39-1.68C18.88 3.21 18.47 3 18 3H6c-.47 0-.88.21-1.16.55L3.46 5.23C3.17 5.57 3 6.02 3 6.5V19c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V6.5c0-.48-.17-.93-.46-1.27zM12 17.5L6.5 12H10v-2h4v2h3.5L12 17.5zM5.12 5l.81-1h12l.94 1H5.12z","save":"M17 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V7l-4-4zm-5 16a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm3-10H5V5h10v4z","share":"M16 5l-1.42 1.42-1.59-1.59V16h-1.98V4.83L9.42 6.42 8 5l4-4 4 4zm4 5v11c0 1.1-.9 2-2 2H6c-1.1 0-2-.9-2-2V10c0-1.11.89-2 2-2h3v2H6v11h12V10h-3V8h3c1.1 0 2 .89 2 2z","plane":"M2.01 21L23 12 2.01 3 2 10l15 2-15 2z","check":"M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z","reply":"M10 9V5l-7 7 7 7v-4.1c5 0 8.5 1.6 11 5.1-1-5-4-10-11-11z","note":"M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04a1 1 0 0 0 0-1.41l-2.34-2.34a1 1 0 0 0-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z","info":"M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z","warn":"M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z","star":"M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z","mail":"M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z","db":"M12 3C7.58 3 4 4.79 4 7v10c0 2.21 3.58 4 8 4s8-1.79 8-4V7c0-2.21-3.58-4-8-4zm0 2c3.87 0 6 1.5 6 2s-2.13 2-6 2-6-1.5-6-2 2.13-2 6-2zm6 12c0 .5-2.13 2-6 2s-6-1.5-6-2v-2.23c1.61.78 3.72 1.23 6 1.23s4.39-.45 6-1.23V17zm0-5c0 .5-2.13 2-6 2s-6-1.5-6-2V9.77C7.61 10.55 9.72 11 12 11s4.39-.45 6-1.23V12z"};
 function svgP(d) { return '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="' + String(d).replace(/[^0-9a-zA-Z.,\s+-]/g, "") + '"/></svg>'; }
 var SVG = {
- zip:svgP(ICO.zip), plane:svgP(ICO.plane), note:svgP(ICO.note),
+ zip:svgP(ICO.zip), plane:svgP(ICO.plane), note:svgP(ICO.note), save:svgP(ICO.save),
  r:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6z"/></svg>',
  l:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6z"/></svg>',
  d:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6z"/></svg>',
@@ -98,6 +99,17 @@ function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {"&":"&amp
 function injectCss(){if(document.getElementById("adc-css"))return;var s=document.createElement("style");s.id="adc-css";s.textContent=CSS;(document.head||document.documentElement).appendChild(s);}
 function b64u(str){var b=new TextEncoder().encode(str),s="";for(var i=0;i<b.length;i++)s+=String.fromCharCode(b[i]);return btoa(s).replace(/\+/g,"-").replace(/\//g,"_").replace(/=+$/,"");}
 function unb64u(s){s=s.replace(/-/g,"+").replace(/_/g,"/");while(s.length%4)s+="=";var bin=atob(s),b=new Uint8Array(bin.length);for(var i=0;i<bin.length;i++)b[i]=bin.charCodeAt(i);return new TextDecoder().decode(b);}
+function bytesB64u(b) { var s = ""; for (var i = 0; i < b.length; i++) s += String.fromCharCode(b[i]); return btoa(s).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, ""); }
+function zipText(str) {
+ if (typeof CompressionStream !== "function" || typeof Response !== "function") return Promise.resolve(null);
+ try { return new Response(new Blob([new TextEncoder().encode(str)]).stream().pipeThrough(new CompressionStream("deflate-raw"))).arrayBuffer().then(function (b) { return bytesB64u(new Uint8Array(b)); }, function () { return null; }); } catch (e) { return Promise.resolve(null); }
+}
+function unzipText(s) { s = s.replace(/-/g, "+").replace(/_/g, "/"); while (s.length % 4) s += "="; var bin = atob(s), b = new Uint8Array(bin.length); for (var i = 0; i < bin.length; i++) b[i] = bin.charCodeAt(i); return new Response(new Blob([b]).stream().pipeThrough(new DecompressionStream("deflate-raw"))).text(); }
+function engineText() {
+ if (ME_TXT) return Promise.resolve(ME_TXT);
+ if (ME_SRC && g.fetch) return g.fetch(ME_SRC).then(function (r) { if (!r.ok) throw new Error("HTTP " + r.status); return r.text(); });
+ return Promise.reject(new Error("engine source not available"));
+}
 function render(data, opts) {
  if (typeof data === "string") data = JSON.parse(data);
  opts = opts || {}; injectCss();
@@ -106,7 +118,7 @@ function render(data, opts) {
  var mode = opts.mode || (typeof g.sendPrompt === "function" ? "inline" : "standalone");
  var L = opts.lang || data.lang || "en";
  var S = {}; [STR.en, STR[L] || {}, (data.strings || {})[L] || {}].forEach(function (o) { for (var k in o) S[k] = o[k]; });
- var Q = data.q || [], OTH = "__other";
+ var Q = data.q || [], OTH = "__other", isWin = typeof navigator !== "undefined" && /Windows/i.test(navigator.userAgent || "");
  var SR = g.SpeechRecognition || g.webkitSpeechRecognition;
  function on(v, d) { return v == null ? d : !(v === false || v === 0); }
  function tx(v) { if (v == null) return ""; if (typeof v === "string" || Array.isArray(v)) return v; return v[L] != null ? v[L] : (v.en != null ? v.en : ""); }
@@ -150,6 +162,7 @@ function render(data, opts) {
  function attBtn(t) { return '<button type="button" class="gbtn sm" data-att="' + esc(t) + '">' + SVG.clip + esc(S.attach) + '</button><input type="file" multiple data-fin="' + esc(t) + '">'; }
  function tools(fid, t) {
   var h = "";
+  if (fid && mode === "inline" && isWin) h += '<button type="button" class="gbtn sm mic" data-winh="' + esc(fid) + '" title="' + esc(S.winhTip) + '">' + SVG.mic + esc(S.winhBtn) + "</button>";
   if (fid && SR && mode === "standalone") h += '<button type="button" class="gbtn sm mic' + (recFid === fid ? " on" : "") + '" data-mic="' + esc(fid) + '">' + SVG.mic + esc(recFid === fid ? S.micOn : S.mic) + "</button>";
   if (t) h += attBtn(t) + (mode === "standalone" ? '<button type="button" class="gbtn sm" data-pst="' + esc(t) + '">' + SVG.paste + esc(S.pasteShot) + '</button>' + (navigator.mediaDevices && navigator.mediaDevices.getDisplayMedia ? '<button type="button" class="gbtn sm" data-cap="' + esc(t) + '">' + SVG.scr + esc(S.capture) + "</button>" : "") : "") + chips(t);
   if (fid && micErr[fid]) h += '<span class="merr">' + esc(micErr[fid]) + "</span>";
@@ -169,7 +182,7 @@ function render(data, opts) {
  function fit(t) { t.style.height = "auto"; var h = t.scrollHeight + 2, s = heights[t.getAttribute("data-fid")] || 0; t.style.height = Math.max(h, s, 36) + "px"; }
  function draw() {
   root.className = "adc"; root.dir = S.dir; root.lang = L;
-  var bar = (hasEx ? '<button type="button" class="gbtn" data-fl="1">' + (flip ? closed() : SVG.d) + esc(flip ? S.collapse : S.expand) + "</button>" : "") + (viewer && mode === "inline" ? '<button type="button" class="gbtn" data-open="1">' + SVG.ext + esc(S.open) + "</button>" : "");
+  var bar = (hasEx ? '<button type="button" class="gbtn" data-fl="1">' + (flip ? closed() : SVG.d) + esc(flip ? S.collapse : S.expand) + "</button>" : "") + (viewer && mode === "inline" ? '<button type="button" class="gbtn" data-open="1">' + SVG.ext + esc(S.open) + "</button>" : "") + (mode === "inline" ? '<button type="button" class="gbtn" data-savehtml="1">' + SVG.save + esc(S.saveHtml) + "</button>" : "");
   var h = (data.title || data.ref ? '<div class="hdr">' + (data.title ? "<b>" + esc(tx(data.title)) + "</b>" : "") + (data.ref ? '<span class="ref"><span class="rl">AiDecisionCard:</span>' + esc(data.ref) + "</span>" : "") + "</div>" : "") + (bar ? '<div class="gbar">' + bar + "</div>" : "");
   if (askWho) h += '<div class="who"><b>' + esc(S.who) + '<span class="req">✱</span></b><input type="text" class="wi" data-who="1" placeholder="' + esc(S.whoPh) + '" value="' + esc(who) + '">' + (errs.__who ? '<div class="merr">' + esc(S.eWho) + "</div>" : "") + "</div>";
   Q.forEach(function (q, qi) {
@@ -185,7 +198,7 @@ function render(data, opts) {
    else if (qt) h += '<div class="qx"><div class="tb">' + attBtn(qt) + chips(qt) + "</div></div>";
    h += "</div>";
   });
-  h += '<div class="ft">' + field("cm:", S.ph, cardAtt ? "c||" : null) + '<button type="button" class="send" data-send="1">' + sendLbl() + "</button></div><div class=\"hint\">" + esc(S.keys) + " · " + esc(mode === "inline" ? S.winh + " · " + S.shotTip : S.paste) + "</div>";
+  h += '<div class="ft">' + field("cm:", S.ph, cardAtt ? "c||" : null) + '<button type="button" class="send" data-send="1">' + sendLbl() + "</button></div><div class=\"hint\">" + esc(S.keys) + " · " + esc(mode === "inline" ? (isWin ? S.shotTip : S.winh + " · " + S.shotTip) : S.paste) + "</div>";
   h += '<div class="svst' + (stMsg ? " " + stMsg[0] : "") + '" data-svst="1"' + (stMsg ? ">" + esc(stMsg[1]) : " hidden>") + '</div>' + (mode === "standalone" ? '<div class="out" hidden><h2>' + esc(S.payload) + '</h2><pre data-o="line"></pre><pre data-o="json"></pre><button type="button" class="gbtn" data-a="copy">' + esc(S.copy) + '</button> <button type="button" class="gbtn" data-a="dlj">' + esc(S.dlj) + '</button> <button type="button" class="gbtn" data-a="dlm">' + esc(S.dlm) + "</button></div>" : "");
   h += modalHtml();
   var ae = document.activeElement, keep = ae && ae.matches && ae.matches("textarea.tx") && root.contains(ae) ? { f: ae.getAttribute("data-fid"), s: ae.selectionStart, e: ae.selectionEnd } : null;
@@ -229,11 +242,17 @@ function render(data, opts) {
  }
  function dl(name, text, type) { var a = document.createElement("a"); a.href = URL.createObjectURL(new Blob([text], { type: type })); a.download = name; document.body.appendChild(a); a.click(); setTimeout(function () { URL.revokeObjectURL(a.href); a.remove(); }, 500); }
  function stateObj() { var s = { sel: {}, notes: notes, other: other, ansN: ansN, cm: cm, who: who }; Q.forEach(function (q, i) { s.sel[q.id] = Object.keys(sel[i]); }); return s; }
- function openExt() {
-  var d = JSON.parse(JSON.stringify(data)); d.lang = L; d._state = stateObj();
-  var url = viewer + "#v=" + VER + "&d=" + b64u(JSON.stringify(d));
-  if (typeof g.openLink === "function") g.openLink(url); else g.open(url, "_blank", "noopener");
-  return url;
+ function linkData() { var d = JSON.parse(JSON.stringify(data)); d.lang = L; d._state = stateObj(); return JSON.stringify(d); }
+ function shortUrl() { var js = linkData(); return zipText(js).then(function (z) { return viewer + "#v=" + VER + (z ? "&z=" + z : "&d=" + b64u(js)); }); }
+ function openExt() { return shortUrl().then(function (url) { if (typeof g.openLink === "function") g.openLink(url); else g.open(url, "_blank", "noopener"); return url; }); }
+ function saveHtml() {
+  status("", S.saving);
+  engineText().catch(function () { return null; }).then(function (src) {
+   if (!src && !ME_SRC) throw new Error("engine source not available");
+   var d = JSON.parse(linkData()), st = d._state, title = tx(data.title) || data.id || "Decision card", fn = safeName(data.id || "CARD") + "_" + stamp() + ".html"; delete d._state;
+   var html = "<!doctype html>\n<html lang=\"" + esc(L) + "\"><head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"><title>" + esc(title) + "</title>\n<!-- AiDecisionCard " + VER + " | card " + esc(data.id || "") + (data.ref ? " | ref " + esc(data.ref) : "") + " | saved " + new Date().toISOString() + (src ? " | self-contained, works offline" : " | loads the engine from " + esc(ME_SRC)) + " -->\n<style>html,body{margin:0;background:#fff;color:#1b1f24;color-scheme:light}body{padding:16px 24px 40px}</style></head><body>\n<div id=\"q\"></div>\n" + (src ? "<script>" + src.replace(/<\/script/gi, "<\\/script") + "\n<\/script>" : "<script src=\"" + esc(ME_SRC) + "\"><\/script>") + "\n<script>AiDecisionCard.render(" + JSON.stringify(d).replace(/</g, "\\u003c") + ",{target:\"#q\",mode:\"standalone\",viewer:false,state:" + JSON.stringify(st).replace(/</g, "\\u003c") + "});<\/script>\n</body></html>\n";
+   dl(fn, html, "text/html"); status("ok", (src ? S.savedHtml : S.savedHtmlNet).replace("{f}", fn));
+  }).catch(function (e) { status("w", S.saveErr + ": " + (e && e.message)); });
  }
  function micToggle(fid) {
   if (rec) { try { rec.stop(); } catch (e) {} return; }
@@ -412,7 +431,9 @@ function render(data, opts) {
   if (i.value === OTH && i.checked) { var f = root.querySelector('textarea[data-fid="ot:' + Q[qi].id + '"]'); if (f) f.focus(); }
  });
  root.addEventListener("click", function (e) {
-  var t = e.target.closest("[data-k],[data-fl],[data-send],[data-a],[data-open],[data-mic],[data-att],[data-rmf],[data-pst],[data-cap],[data-mclose],[data-jump],[data-ad],[data-pv],[data-go]"); if (!t) return;
+  var t = e.target.closest("[data-k],[data-fl],[data-send],[data-a],[data-open],[data-mic],[data-att],[data-rmf],[data-pst],[data-cap],[data-mclose],[data-jump],[data-ad],[data-pv],[data-go],[data-savehtml],[data-winh]"); if (!t) return;
+  if (t.dataset.winh) { var wt = root.querySelector('textarea[data-fid="' + t.dataset.winh.replace(/"/g, '\\"') + '"]'); if (wt) { wt.focus(); try { wt.setSelectionRange(wt.value.length, wt.value.length); } catch (x) {} } return; }
+  if (t.dataset.savehtml) { saveHtml(); return; }
   if (t.dataset.go) { go(); return; }
   if (t.dataset.pv) { var pf = files.filter(function (f) { return f.id === +t.dataset.pv; })[0]; if (pf) { modal = { type: "img", f: pf }; draw(); focusModal(); } return; }
   if (t.dataset.ad) { var ak = t.dataset.ad; adOpen[ak] = !adOpen[ak]; draw(); if (adOpen[ak]) { var ta = root.querySelector('textarea[data-fid="an:' + ak.replace(/"/g, '\\"') + '"]'); if (ta) ta.focus(); } return; }
@@ -435,12 +456,14 @@ function render(data, opts) {
   }
  });
  draw();
- return { payload: payload, redraw: draw, openUrl: function () { var d = JSON.parse(JSON.stringify(data)); d.lang = L; d._state = stateObj(); return viewer + "#v=" + VER + "&d=" + b64u(JSON.stringify(d)); }, addFiles: addFiles, paste: onPaste, lastResult: function () { return last; } };
+ return { payload: payload, redraw: draw, openUrl: function () { return viewer + "#v=" + VER + "&d=" + b64u(linkData()); }, shortUrl: shortUrl, saveHtml: saveHtml, addFiles: addFiles, paste: onPaste, lastResult: function () { return last; } };
 }
 function fromHash(hash, opts) {
- var m = /[#&]d=([^&]+)/.exec(hash || g.location.hash); if (!m) return null;
- var d = JSON.parse(unb64u(m[1])); opts = opts || {}; if (d._state) { opts.state = d._state; delete d._state; }
- if (!opts.mode) opts.mode = "standalone"; return render(d, opts);
+ hash = hash || g.location.hash; opts = opts || {};
+ var go = function (d) { if (d._state) { opts.state = d._state; delete d._state; } if (!opts.mode) opts.mode = "standalone"; return render(d, opts); };
+ var z = /[#&]z=([^&]+)/.exec(hash); if (z) return unzipText(z[1]).then(function (t) { return go(JSON.parse(t)); });
+ var m = /[#&]d=([^&]+)/.exec(hash); if (!m) return null;
+ return go(JSON.parse(unb64u(m[1])));
 }
 g.AiDecisionCard = { render: render, fromHash: fromHash, version: VER, strings: STR, encode: b64u, decode: unb64u };
 })(typeof window !== "undefined" ? window : this);

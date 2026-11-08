@@ -1,5 +1,10 @@
 # **Changelog**
 
+## **v1.2.3 - 2026-11-08**
+
+- Fix: **Open in browser** no longer silently does nothing on a long card. The link now carries the card deflate-compressed (`#z=`) instead of raw base64 (`#d=`) - a seven-question card measured 17,326 characters before and 7,562 after. `fromHash` reads `z=` first and still accepts `d=`, so every link made by an earlier version keeps working.
+- New: **Save as HTML file** button on chat cards - downloads the card as one self-contained white page that opens offline, with the current answers already filled in. This is the reliable route when a card is too big for any link.
+
 ## **v1.2.2 — 2026-11-08**
 
 - Card header: the reference ID now shows under a label line **AiDecisionCard:** (label on its own line, ID below). Same label replaces "Reference" in the summary dialog (en + he) and "Card ref" in the `merge.js` report. Input/output JSON unchanged (`ref` / `card_ref`).
