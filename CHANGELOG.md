@@ -1,5 +1,9 @@
 # **Changelog**
 
+## **v1.2.2 — 2026-11-08**
+
+- Card header: the reference ID now shows under a label line **AiDecisionCard:** (label on its own line, ID below). Same label replaces "Reference" in the summary dialog (en + he) and "Card ref" in the `merge.js` report. Input/output JSON unchanged (`ref` / `card_ref`).
+
 ## **v1.2.1 — 2026-10-28**
 
 - Fix: export no longer fails ("file could not be read") when an attached file is edited, moved or locked after attaching — files are kept in memory from the moment they are attached.

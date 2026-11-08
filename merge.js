@@ -113,7 +113,7 @@ td{unicode-bidi:plaintext}.n{text-align:end;white-space:nowrap;width:1%}.bar{bac
 .q{border:1px solid #d8dee6;border-radius:3px;padding:4px 14px 8px;margin:12px 0}.who{color:#1b1f24}.mu{color:#5b6672}img.th{max-width:160px;max-height:110px;border:1px solid #d8dee6;display:block}a{color:#0b5cad}
 </style></head><body>
 <h1><b>Team answers — ${esc(cardId)}</b></h1>
-<div class="meta">Report ID: <b>${esc(reportId)}</b>${cardRef ? " · Card ref: <b>" + esc(cardRef) + "</b>" : ""} · ${N} respondent${N === 1 ? "" : "s"} · merged ${esc(d0.toLocaleString("en-GB"))} · source: ${esc(path.resolve(dir))}</div>`;
+<div class="meta">Report ID: <b>${esc(reportId)}</b>${cardRef ? " · AiDecisionCard: <b>" + esc(cardRef) + "</b>" : ""} · ${N} respondent${N === 1 ? "" : "s"} · merged ${esc(d0.toLocaleString("en-GB"))} · source: ${esc(path.resolve(dir))}</div>`;
 h += `<h2><b>Flags</b></h2>` + (flags.length ? `<table><tr><th class="n">Status</th><th>Issue</th><th>Detail</th></tr>${flags.map(f => `<tr><td class="n">${f[0]} ${f[0] === "🔴" ? "Skipped" : f[0] === "🟠" ? "Check" : "Info"}</td><td>${esc(f[1])}</td><td>${esc(f[2])}</td></tr>`).join("")}</table>` : `<div>✅ OK — no anomalies found</div>`);
 h += `<h2><b>Respondents</b></h2><table><tr><th class="n">#</th><th>Name / ID</th><th>Exported</th><th class="n">Files</th><th>ZIP</th></tr>${team.map((r, i) => `<tr><td class="n">${i + 1}</td><td><b>${esc(r.name)}</b></td><td>${esc(r.json.exported_at || "")}</td><td class="n">${r.files.length}</td><td>${esc(r.zip)}</td></tr>`).join("")}</table>`;
 h += `<h2><b>Answers by question</b></h2>`;

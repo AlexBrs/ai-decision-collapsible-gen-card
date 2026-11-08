@@ -5,7 +5,7 @@ description: Ask the user every question that has answer options (approvals, yes
 
 # AiDecisionCard — ask decisions as a card, not as prose
 
-Engine: `https://github.com/AlexBrs/ai-decision-collapsible-gen-card`, pin a released tag (currently **v1.2.1**).
+Engine: `https://github.com/AlexBrs/ai-decision-collapsible-gen-card`, pin a released tag (currently **v1.2.2**).
 Schemas: `schema/input.schema.json`, `schema/output.schema.json`.
 
 **Golden rule: send DATA only.** Never write the card's HTML, CSS or JS yourself and never paste the engine — a card costs a few KB of JSON instead of ~55 KB of UI code.
@@ -23,7 +23,7 @@ Schemas: `schema/input.schema.json`, `schema/output.schema.json`.
 ```html
 <h2 style="position:absolute;left:-9999px">One-sentence summary of the card</h2>
 <div id="q"></div>
-<script src="https://cdn.jsdelivr.net/gh/AlexBrs/ai-decision-collapsible-gen-card@v1.2.1/ai-decision-card.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/AlexBrs/ai-decision-collapsible-gen-card@v1.2.2/ai-decision-card.js"></script>
 <script>AiDecisionCard.render({ ...card data... },{target:"#q"});</script>
 ```
 2. **Terminal agents (Claude Code and similar)**: write the card JSON to a file and run `node <clone>/render.js <file>.json [--multi]` — it writes a self-contained page and opens it in the browser. The user exports the answers (JSON or ZIP) and returns them. For 1–2 trivial questions a plain picker is fine.
@@ -59,7 +59,7 @@ Good cards: one decision per question; plain words, no bare internal codes; cost
 ## Reading the answer
 A JSON block (chat) or a ZIP (`answers.json`, `answers.md`, `files/*`) from the browser page:
 ```json
-{"artifact_id":"MYPROJ_BACKUP","card_ref":"…","engine":"AiDecisionCard 1.2.1","answers":{"B2":{"question":"…","blocking":true,"multi":false,"answer":"ok","answer_label":"…","own_answer":"","notes":""}},"attachments":[],"summary_comments":"","missing_blocking":[]}
+{"artifact_id":"MYPROJ_BACKUP","card_ref":"…","engine":"AiDecisionCard 1.2.2","answers":{"B2":{"question":"…","blocking":true,"multi":false,"answer":"ok","answer_label":"…","own_answer":"","notes":""}},"attachments":[],"summary_comments":"","missing_blocking":[]}
 ```
 Decide on `answer` keys (array when multi, `__other` → `own_answer`). Always read `notes`, `answer_notes` and `summary_comments` — they often carry new requirements. File contents are never inside the JSON.
 
