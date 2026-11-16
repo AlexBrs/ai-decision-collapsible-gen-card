@@ -1,5 +1,27 @@
 # **Changelog**
 
+## **v1.2.6 — 2026-11-16**
+
+- **The card now orders the options itself, best answer first.** Previously the reader got whatever
+  order the author happened to write, so a weak option could sit above the recommended one — which
+  is exactly what happened on card `AB_20261116_1115_ADC_Oic_CONN_AUTOMATION`, where a 5/10 "keep
+  doing it by hand" was drawn above the recommended 9/10. Now the rating (`s`) decides: highest at
+  the top, lowest at the bottom. Equal ratings put the recommended option (`r`) first. Options with
+  no usable rating sit below all rated ones, keeping their authored order among themselves except
+  that a recommended one leads them — a recommended option is never buried, rated or not. A rating
+  counts as a rating only if it is a finite number or a string that reads as one (`"8"`); anything
+  else — missing, empty, blank, text, `true`/`false`, `NaN`, infinity, a list, an object — counts as
+  unrated, so a junk value can never float to the top.
+- Keys and shapes are unchanged, but **ordering inside the answers payload changes**: each
+  question's options, and therefore a multi-select `answer` array, now follow the drawn order
+  rather than the authored one.
+
+## **v1.2.5 — 2026-11-08**
+
+- Repository only: the skill document moved into this repository beside the engine, with its card-rule
+  history. **No engine change**, which is why a card rendered from the `v1.2.5` tag still reports
+  itself as `AiDecisionCard 1.2.4`.
+
 ## **v1.2.4 — 2026-11-08**
 
 - File names start with **AiDecisionCard_**: Save as HTML file `AiDecisionCard_<card id>_<YYYYMMDD>_<HHMMSS>.html`; exported ZIP default `AiDecisionCard_<card id>[_<respondent>]_<YYYYMMDD>_<HHMMSS>.zip`; `render.js` page `AiDecisionCard_<card id>_<YYYYMMDD>_<HHMMSS>.html` (seconds added; `AIDC_PREFIX` overrides the prefix, empty = none).

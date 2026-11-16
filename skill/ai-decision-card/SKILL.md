@@ -64,7 +64,18 @@ release is a CANDIDATE until AlexBrs approves it there - name it and ask, never 
 | `o[].l` / `d` | Label / one-line effect | — |
 | `o[].x` | Answer explanation bullets (collapsed) | none |
 | `o[].r` | Recommended: tagged and pre-selected | 0 |
-| `o[].s` | Rating 1–10 badge (≥8 green ✓, 5–7 amber ●, ≤4 red ✕). **Give a rating on EVERY option "as usual"**, including the "No/Skip" ones; reason in `d` | none |
+| `o[].s` | Rating 1–10 badge (≥8 green ✓, 5–7 amber ●, ≤4 red ✕). **Give a rating on EVERY option "as usual"**, including the "No/Skip" ones; reason in `d`. **From v1.2.6 the rating also decides the row order** — see below | none |
+
+**The card orders the options itself, best first (v1.2.6, AlexBrs 16/11/2026: "sorted by score
+(recommendation) high to low").** You no longer have to order them by hand, and you no longer can
+get it wrong: the card sorts by `s`, highest at the top, with `r` winning a tie, and unrated
+options below all rated ones (keeping their authored order among themselves, except that a
+recommended one leads them). Keep rating every option, because an option with no usable `s` sinks
+to the bottom whatever it says: only a finite number or a string that reads as one (`"8"`) counts,
+and anything else — empty, blank, text, `true`/`false`, `NaN`, infinity — is treated as unrated.
+If you mark a low-rated option `r`, the
+higher-rated one is still drawn above it — the card is telling you your two markings disagree, so
+fix the rating.
 
 Any text can be `"string"` or `{"en":"…","he":"…"}`.
 

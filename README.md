@@ -94,6 +94,23 @@ AiDecisionCard.fromHash(location.hash, { target })   // used by the viewer page
 
 Any text field is a string or `{ "en": "...", "he": "..." }`. Omit `x` and no toggle is shown.
 
+**Option order is decided by the card, not by the author (v1.2.6).** Whatever order you write the
+options in, the card draws them best-first, so the reader's eye lands on the strongest answer:
+
+- Highest `s` rating at the top, down to the lowest.
+- Two options on the same rating: the one marked `r` (recommended) leads.
+- Options with no usable rating sit below every rated one. Among themselves they keep the order you
+  wrote, except that one marked `r` leads them — a recommended option is never buried, rated or not.
+- Only a finite number, or a string that reads as one (`"8"`), counts as a rating. Anything else —
+  missing, empty, blank, text, `true`/`false`, `NaN`, infinity, a list, an object — counts as
+  unrated and sinks to the bottom.
+- Rating beats the recommended flag: mark a 4/10 as recommended and a 9/10 still sits above it.
+  That is the card telling you your two markings disagree — fix the rating.
+
+The answers payload lists each question's options in that same drawn order, so a multi-select
+`answer` array now follows the drawn order rather than the authored one. Keys and shape are
+unchanged.
+
 ## **Output** — [`schema/output.schema.json`](schema/output.schema.json)
 
 ```json
