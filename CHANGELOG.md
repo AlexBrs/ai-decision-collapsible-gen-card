@@ -1,13 +1,15 @@
 # **Changelog**
 
-## **v1.3.0-rc2 (CANDIDATE, not adopted) — 2026-11-22**
+## **v1.3.0 — 2026-11-22**
 
 - **Look unchanged except two things:** the **Blocking**, **Optional** and **Select all that apply** badges are gone (required stays the red ✱), and line breaking is fixed (long names without spaces stay on a phone screen; Hebrew mixed text such as "2.9 MB" keeps its order). No new rows, links or headings — the option's left toggle remains the only expand control.
 - **Option explanations (the real fix).** Option details (`o[].x`) are now mandatory in the skill for every option that is not self-evident, and `render.js` warns about every option without them (`"x":[]` marks an option as intentionally self-evident). An `x` item may be a labelled line `{"h":"Cost","t":"free"}` → **Cost:** free; plain strings still work.
-- rc1 (Details link, hint line, panel headings) was withdrawn after QA: duplicated the toggle and added rows.
+- Includes the v1.2.7 phone layout fix below (v1.2.7 was never tagged on its own).
+- QA 22/11/2026: export ZIP, chat submit, required-answer dialog, multi-choice answer notes, own answer, card attachment, Hebrew card and an old card - answers JSON identical to v1.2.7 for the same clicks.
 - Output JSON unchanged.
 
-## **v1.2.7 — 2026-11-22**
+## **v1.2.7 — 2026-11-22** (not tagged; shipped in v1.3.0)
+
 - Phone layout: under 600 px the question title takes the full row and the 'Select all that apply' / 'Blocking' badges wrap onto their own line (no more one-word-per-line titles, no clipped 'Blocking').
 - Option names no longer break at hyphens (name on its own line, Recommended + rating badge below).
 - Narrower left columns and indents on small screens. Desktop layout unchanged.
