@@ -1,5 +1,14 @@
 # **Changelog**
 
+## **v1.3.0-rc1 (CANDIDATE, not adopted) — 2026-11-22**
+
+- **Details on every option.** An option with explanation (`o[].x`) shows a visible **▸ Details** link under its text (toggles to **▾ Hide details**); the panel is headed **Details**. The left toggle still works.
+- **Structured details.** An `x` item may be `{"h":"Cost","t":"free"}` and is drawn as a labelled line (**Cost:** free). Plain strings still work.
+- **Multi-choice answer panel** now shows **Details** first, then **Your comment on this answer**.
+- **Badges removed**: Blocking / Optional / Select all that apply. Required stays the red ✱; a small grey hint under the title says "Choose one or more" and/or "Optional".
+- Fix: long names without spaces no longer run off a phone screen; Hebrew mixed text ("2.9 MB") keeps its order.
+- Output JSON unchanged.
+
 ## **v1.2.7 — 2026-11-22**
 - Phone layout: under 600 px the question title takes the full row and the 'Select all that apply' / 'Blocking' badges wrap onto their own line (no more one-word-per-line titles, no clipped 'Blocking').
 - Option names no longer break at hyphens (name on its own line, Recommended + rating badge below).

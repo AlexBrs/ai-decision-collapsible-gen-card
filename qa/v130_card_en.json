@@ -1,0 +1,19 @@
+{"id":"ClaudeSetup_ADC_V130_QA","title":"QA card — v1.3.0 candidate (all question types)","ref":"AB_20261122_0730_ADC_ClaudeSetup_V130_QA","lang":"en",
+"q":[
+{"id":"Q1","t":"Q1: Single choice, required — which backup route? (free)","v":"i:save","x":["Question explanation: opens with the left toggle or Expand all.","Required question: red ✱ only, no Blocking badge."],"m":0,"b":1,
+ "o":[{"k":"copy","l":"Local copy to backups folder","d":"Fast, free, stays on this PC","r":1,"s":9,
+   "x":[{"h":"What happens","t":"The whole folder is copied to backups\\AB_<date>_<name>."},{"h":"Cost","t":"Free"},{"h":"Undo","t":"Delete the copy; nothing else changes."},{"h":"Risk","t":"None to the source; uses ~3 MB disk."}]},
+  {"k":"git","l":"Git commit + push to private repo","d":"Versioned, off-machine","s":7,
+   "x":["Plain-bullet details still work (old style).","Needs a private repo; free on GitHub.","Restore with git checkout."]},
+  {"k":"none","l":"No backup","d":"Self-explanatory — no details link","s":2}]},
+{"id":"Q2","t":"Q2: Multi choice, required — which folders become git repos?","v":"i:db","m":1,"b":1,
+ "o":[{"k":"crossdb","l":"RDW_CROSSDB_VB","d":"Active project part, 0.5 MB","r":1,"s":9,"x":[{"h":"Why","t":"Cross-DB Visual Builder part, edited 21/10 — still active."},{"h":"Effect","t":"git init + first commit + push to a new private repo."},{"h":"Cost","t":"Free"}]},
+  {"k":"v14","l":"AB_01112026_XLSX2REQ_CANDIDATE_v14_0 + v_tmp17_01","d":"Recent candidates, 4.1 + 1.7 MB","r":1,"s":7,"x":["Recent (08/11, 11/11), not yet in git.","Long hyphen-free name: checks wrapping on phone."]},
+  {"k":"mutr7","l":"mutR7","d":"2.9 MB, 31/10","s":6},
+  {"k":"old","l":"12 old Aug snapshots → one archive repo","d":"History only","s":5,"x":["Superseded by later git versions; kept only as history.",{"h":"Undo","t":"Delete the archive repo."}]}]},
+{"id":"Q3","t":"Q3: Single choice, optional — notify by mail when done?","v":"i:mail","m":0,"b":0,
+ "o":[{"k":"y","l":"Yes","s":6,"d":"One summary mail"},{"k":"n","l":"No","r":1,"s":8,"d":"Chat report only"}]},
+{"id":"Q4","t":"Q4: Multi choice, optional — extra checks (long title to test wrapping of the question line on a narrow phone screen)","m":1,"b":0,"c":0,
+ "o":[{"k":"lint","l":"fusion-custom-object-json","d":"long hyphenated name","s":6,"x":["Hyphenated name must not break mid-word."]},
+  {"k":"size","l":"Size report","d":"MB per folder","s":5}]}
+]}
