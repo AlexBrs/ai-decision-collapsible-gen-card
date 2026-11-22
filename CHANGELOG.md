@@ -1,5 +1,12 @@
 # **Changelog**
 
+## **v1.3.2-rc1 (CANDIDATE, not adopted) — 2026-11-22**
+
+- **Microphone hint on phones** (AlexBrs card ClaudeSetup_ADC_V132_APPROVE): every comment box shows a small grey mic icon + "Tap mic on keyboard" (Hebrew: "הקש על המיקרופון במקלדת") on its button row, next to Attach. Plain text, not a button; it disappears as soon as you type. No device icon (rated 4/10 vs 9/10 without).
+- PC: unchanged — the chat card already has the "Dictate = Win+H" button; Chrome keeps the Dictate button.
+- First try (hint inside the box) collided with the "Comments (optional)" text on a 380 px phone → moved to the button row (no extra row).
+- Answers JSON unchanged.
+
 ## **v1.3.1 — 2026-11-22**
 
 - **Save inside the chat app** (AlexBrs card ClaudeSetup_ADC_V131_SAVE, S1 = hint): the Claude phone app blocks downloads from a chat card. After **Save as HTML file** the card now says "Nothing downloaded (phone app)? Open the card in the browser and save it there." with an **Open in browser** button, instead of claiming the file was downloaded.
