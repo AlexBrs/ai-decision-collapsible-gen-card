@@ -1,9 +1,9 @@
 # **Changelog**
 
-## **v1.3.2-rc1 (CANDIDATE, not adopted) — 2026-11-22**
+## **v1.3.2-rc2 (CANDIDATE, not adopted) — 2026-11-22**
 
-- **Microphone hint on phones** (AlexBrs card ClaudeSetup_ADC_V132_APPROVE): every comment box shows a small grey mic icon + "Tap mic on keyboard" (Hebrew: "הקש על המיקרופון במקלדת") on its button row, next to Attach. Plain text, not a button; it disappears as soon as you type. No device icon (rated 4/10 vs 9/10 without).
-- PC: unchanged — the chat card already has the "Dictate = Win+H" button; Chrome keeps the Dictate button.
+- **Microphone hint on phones** (AlexBrs card ClaudeSetup_ADC_V132_APPROVE, wording by AlexBrs): every comment box shows a small grey mic icon + "Tap mic on kbrd" (Hebrew: "מיקרופון במקלדת") on its button row, next to Attach. Plain text, not a button; always visible. No device icon.
+- PC chat card: the dictation button label is now just **Win+H** (was "Dictate = Win+H"). Chrome keeps the Dictate button.
 - First try (hint inside the box) collided with the "Comments (optional)" text on a 380 px phone → moved to the button row (no extra row).
 - Answers JSON unchanged.
 
