@@ -1,12 +1,13 @@
 # **Changelog**
 
-## **v1.3.2-rc3 (CANDIDATE, not adopted) — 2026-11-22**
+## **v1.3.2 — 2026-11-22**
 
 - **Dictation buttons by device** (AlexBrs final decision, 22/11/2026):
   - **Windows PC — always "Win+H"** (chat card and Chrome page). The button puts the cursor in the box; then press Win+H (Windows voice typing). The in-page Dictate button is no longer shown on Windows.
   - **Phone — always "Tap mic on keyboard"** (Hebrew: "הקש על המיקרופון במקלדת"). The button puts the cursor in the box so the keyboard opens; then tap its microphone. The in-page Dictate button is no longer shown on phones.
   - Mac / Linux: unchanged (Dictate button where the browser supports it) — Win+H does not exist there.
 - No device icon. Answers JSON unchanged.
+- Phone QA 22/11/2026: note — Dictate does work on the https "Open in browser" page in Chrome on Android; AlexBrs chose one consistent rule (keyboard mic) anyway.
 
 ## **v1.3.1 — 2026-11-22**
 
