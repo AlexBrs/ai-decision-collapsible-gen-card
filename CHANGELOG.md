@@ -1,11 +1,15 @@
 # **Changelog**
 
-## **v1.3.1-rc1 (CANDIDATE, not adopted) — 2026-11-22**
+## **v1.3.1-rc2 (CANDIDATE, not adopted) — 2026-11-22**
 
 - **Save inside the chat app** (AlexBrs card ClaudeSetup_ADC_V131_SAVE, S1 = hint): the Claude phone app blocks downloads from a chat card. After **Save as HTML file** the card now says "Nothing downloaded (phone app)? Open the card in the browser and save it there." with an **Open in browser** button, instead of claiming the file was downloaded.
 - **Fix: "Listening… click to stop" could never be stopped** when the phone never really started the microphone (phone QA 22/11/2026, both in the app Preview and in Chrome). Stop now always resets within 1.5 s, and a microphone that does not start within 4 s resets by itself with a hint.
 - **Dictate and Paste screenshot are hidden where they cannot work** (page not secure, e.g. a card file opened from phone storage, or no clipboard support). Attach stays.
 - Hints are device-neutral: "use your keyboard's voice typing" / "use Attach and pick the screenshot" (Windows keys kept in brackets).
+- **Paste screenshot is hidden on Android**: an Android screenshot is never put in the clipboard. Use Attach (gallery) or + in the chat.
+- **"Download started"** instead of "Downloaded": the card cannot know whether the phone really saved the file.
+- Chat-card file hint now says: add the files to the chat with +.
+- Phone QA 22/11/2026 (AlexBrs, card ClaudeSetup_ADC_V131_PHONE_QA): Save hint + button shown in the chat card; in Chrome Dictate/Paste hidden, Attach works, ZIP contains the attached photo.
 - Answers JSON unchanged (same functional suite as v1.3.0).
 
 ## **v1.3.0 — 2026-11-22**
