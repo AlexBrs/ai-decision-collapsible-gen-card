@@ -99,6 +99,11 @@ File names (v1.2.4+, Alex 08/11/2026, global): every card file starts with `AiDe
   - in the browser page, Attach, Paste screenshot, Capture screen and Ctrl+V add files; **Export answers (ZIP)** downloads ONE ZIP: `answers.json`, `answers.md`, `files/*` (`delivery: "zip"`, `saved_as`). He attaches the ZIP to the chat.
 - Dialogs: "Required information missing" (name/ID box, Go to Qx) → "Ready to export / submit" summary with an editable file name. 1-question chat cards submit at once.
 
+## Phone (Android) — what works where (v1.3.1, tested 22/11/2026)
+- **Chat card in the Claude app**: answer, details, comments, Submit to Claude ✅; files: the card only lists names → user adds the real files with **+** in the chat after Submit; speech: the keyboard microphone. Save shows a hint + Open in browser (the app blocks downloads).
+- **Full card**: Open in browser (Chrome) → Attach, Export ZIP ✅. Paste screenshot is hidden on Android (screenshots never reach the clipboard).
+- Never push files through the card as text (token cost); evidence files belong in storage (e.g. BS4U/APEX), Claude gets text + file list only.
+
 ## Reading the answer
 In the chat, the user message holds a readable line, then a ```json block — or a ZIP attachment (unzip it, read `answers.json`, view the files):
 ```json
