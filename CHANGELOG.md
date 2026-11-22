@@ -1,5 +1,13 @@
 # **Changelog**
 
+## **v1.3.1-rc1 (CANDIDATE, not adopted) — 2026-11-22**
+
+- **Save inside the chat app** (AlexBrs card ClaudeSetup_ADC_V131_SAVE, S1 = hint): the Claude phone app blocks downloads from a chat card. After **Save as HTML file** the card now says "Nothing downloaded (phone app)? Open the card in the browser and save it there." with an **Open in browser** button, instead of claiming the file was downloaded.
+- **Fix: "Listening… click to stop" could never be stopped** when the phone never really started the microphone (phone QA 22/11/2026, both in the app Preview and in Chrome). Stop now always resets within 1.5 s, and a microphone that does not start within 4 s resets by itself with a hint.
+- **Dictate and Paste screenshot are hidden where they cannot work** (page not secure, e.g. a card file opened from phone storage, or no clipboard support). Attach stays.
+- Hints are device-neutral: "use your keyboard's voice typing" / "use Attach and pick the screenshot" (Windows keys kept in brackets).
+- Answers JSON unchanged (same functional suite as v1.3.0).
+
 ## **v1.3.0 — 2026-11-22**
 
 - **Look unchanged except two things:** the **Blocking**, **Optional** and **Select all that apply** badges are gone (required stays the red ✱), and line breaking is fixed (long names without spaces stay on a phone screen; Hebrew mixed text such as "2.9 MB" keeps its order). No new rows, links or headings — the option's left toggle remains the only expand control.
