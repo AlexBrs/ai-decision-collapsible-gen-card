@@ -62,7 +62,7 @@ release is a CANDIDATE until AlexBrs approves it there - name it and ask, never 
 | `q[].v` / `o[].v` | Visual: `"i:<icon>"` (tray, file, zip, save, share, plane, check, reply, note, info, warn, star, mail, db, mic, clip, paste, scr, ext), `"p:<24x24 svg path>"`, or `"https://…"` image (chat loading unverified) | none |
 | `o[].k` | Stable machine key (never translated; `__other` reserved) | — |
 | `o[].l` / `d` | Label / one-line effect | — |
-| `o[].x` | Answer explanation bullets (collapsed) | none |
+| `o[].x` | **Required on every option that is not self-evident** (v1.3.0, AlexBrs 22/11/2026: "there is no detailed explain on option level"). Opens with the option's left toggle. Items are strings or labelled lines `{"h":"Cost","t":"free"}`. Cover what applies: **What happens**, **Why**, **Cost**, **Undo**, **Risk**. Use `"x":[]` only for a truly self-evident option (e.g. plain Yes/No with a clear `d`); `render.js` warns about every option with no `x` | — |
 | `o[].r` | Recommended: tagged and pre-selected | 0 |
 | `o[].s` | Rating 1–10 badge (≥8 green ✓, 5–7 amber ●, ≤4 red ✕). **Give a rating on EVERY option "as usual"**, including the "No/Skip" ones; reason in `d`. **From v1.2.6 the rating also decides the row order** — see below | none |
 
@@ -80,6 +80,7 @@ fix the rating.
 Any text can be `"string"` or `{"en":"…","he":"…"}`.
 
 Write good cards:
+- **Option details are mandatory**: if Alex could ask "what exactly happens if I pick this?", the answer belongs in that option's `x`. A label plus a 2-word `d` ("Recent", "History only") is NOT enough.
 - One decision per question.
 - Mark the recommended option; put ratings on every option.
 - Put cost ("free" / amount) and reversibility in `d` or `x`.

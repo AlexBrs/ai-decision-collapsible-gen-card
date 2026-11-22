@@ -15,6 +15,10 @@ for (const q of data.q) {
   if (!q.id || !Array.isArray(q.o) || !q.o.length) { console.error("Invalid question: " + JSON.stringify(q).slice(0, 80)); process.exit(2); }
   for (const o of q.o) if (!o.k || o.k === "__other") { console.error("Missing or reserved option key in " + q.id); process.exit(2); }
 }
+// v1.3.0: explanation lint - every option needs details (o.x) unless the author marks it self-evident with "x":[]
+const noX = [];
+for (const q of data.q) for (const o of q.o) if (o.x === undefined || o.x === null || o.x === "") noX.push(q.id + "/" + o.k);
+if (noX.length) console.warn("WARNING: " + noX.length + " option(s) without details (o.x): " + noX.join(", ") + "\n  Add \"x\":[...] with What happens / Cost / Undo / Risk, or \"x\":[] if truly self-evident.");
 const engine = fs.readFileSync(path.join(__dirname, "ai-decision-card.js"), "utf8");
 const d = new Date(), p2 = n => String(n).padStart(2, "0");
 const ts = d.getFullYear() + p2(d.getMonth() + 1) + p2(d.getDate()) + "_" + p2(d.getHours()) + p2(d.getMinutes()) + p2(d.getSeconds());

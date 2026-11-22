@@ -1,12 +1,10 @@
 # **Changelog**
 
-## **v1.3.0-rc1 (CANDIDATE, not adopted) — 2026-11-22**
+## **v1.3.0-rc2 (CANDIDATE, not adopted) — 2026-11-22**
 
-- **Details on every option.** An option with explanation (`o[].x`) shows a visible **▸ Details** link under its text (toggles to **▾ Hide details**); the panel is headed **Details**. The left toggle still works.
-- **Structured details.** An `x` item may be `{"h":"Cost","t":"free"}` and is drawn as a labelled line (**Cost:** free). Plain strings still work.
-- **Multi-choice answer panel** now shows **Details** first, then **Your comment on this answer**.
-- **Badges removed**: Blocking / Optional / Select all that apply. Required stays the red ✱; a small grey hint under the title says "Choose one or more" and/or "Optional".
-- Fix: long names without spaces no longer run off a phone screen; Hebrew mixed text ("2.9 MB") keeps its order.
+- **Look unchanged except two things:** the **Blocking**, **Optional** and **Select all that apply** badges are gone (required stays the red ✱), and line breaking is fixed (long names without spaces stay on a phone screen; Hebrew mixed text such as "2.9 MB" keeps its order). No new rows, links or headings — the option's left toggle remains the only expand control.
+- **Option explanations (the real fix).** Option details (`o[].x`) are now mandatory in the skill for every option that is not self-evident, and `render.js` warns about every option without them (`"x":[]` marks an option as intentionally self-evident). An `x` item may be a labelled line `{"h":"Cost","t":"free"}` → **Cost:** free; plain strings still work.
+- rc1 (Details link, hint line, panel headings) was withdrawn after QA: duplicated the toggle and added rows.
 - Output JSON unchanged.
 
 ## **v1.2.7 — 2026-11-22**
