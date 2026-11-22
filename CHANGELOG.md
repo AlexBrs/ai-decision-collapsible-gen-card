@@ -1,10 +1,10 @@
-## v1.2.7 (CANDIDATE, not adopted) - 2026-11-22
+# **Changelog**
+
+## **v1.2.7 — 2026-11-22**
 - Phone layout: under 600 px the question title takes the full row and the 'Select all that apply' / 'Blocking' badges wrap onto their own line (no more one-word-per-line titles, no clipped 'Blocking').
 - Option names no longer break at hyphens (name on its own line, Recommended + rating badge below).
 - Narrower left columns and indents on small screens. Desktop layout unchanged.
 - Tested 360 / 390 / 800 (landscape) / 1400 px: no element wider than the screen.
-
-# **Changelog**
 
 ## **v1.2.6 — 2026-11-16**
 
