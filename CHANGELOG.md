@@ -1,5 +1,15 @@
 # **Changelog**
 
+## **v1.3.3 — 2026-11-22**
+
+- **Recording is back** (it was wrongly removed in v1.3.2 — AlexBrs never asked for that). One mic button per comment box, labelled by device:
+  - Phone: **Tap mic on keyboard** — Windows: **Win+H** — Mac/Linux: **Dictate**.
+  - Where the card can record (Chrome page over https, e.g. Open in browser; PC Chrome), tapping it **records**; the button shows **Listening…** with a red stop icon — tap to stop.
+  - Where it cannot (phone chat card in the Claude app, card files from phone storage), the same button puts the cursor in the box so you use the keyboard mic / Win+H.
+  - If the microphone never starts, the card resets after 4 s, shows a hint and puts the cursor in the box.
+- Phone evidence (AlexBrs 22/11/2026 21:56): card recording works in Chrome on Android via Open in browser.
+- Answers JSON unchanged.
+
 ## **v1.3.2 — 2026-11-22**
 
 - **Dictation buttons by device** (AlexBrs final decision, 22/11/2026):

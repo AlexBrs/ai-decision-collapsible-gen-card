@@ -100,7 +100,7 @@ File names (v1.2.4+, Alex 08/11/2026, global): every card file starts with `AiDe
 - Dialogs: "Required information missing" (name/ID box, Go to Qx) → "Ready to export / submit" summary with an editable file name. 1-question chat cards submit at once.
 
 ## Phone (Android) — what works where (v1.3.1, tested 22/11/2026)
-- **Chat card in the Claude app**: answer, details, comments, Submit to Claude ✅; files: the card only lists names → user adds the real files with **+** in the chat after Submit; speech: the keyboard microphone. Since v1.3.2 every comment box shows **Tap mic on keyboard** on phones and **Win+H** on Windows (both put the cursor in the box). Save shows a hint + Open in browser (the app blocks downloads).
+- **Chat card in the Claude app**: answer, details, comments, Submit to Claude ✅; files: the card only lists names → user adds the real files with **+** in the chat after Submit; speech: the keyboard microphone. Since v1.3.3 every comment box has one mic button: **Tap mic on keyboard** (phone) / **Win+H** (Windows) / Dictate (Mac). Where the card can record (Chrome over https), it records (Listening… + red stop); elsewhere it puts the cursor in the box. Save shows a hint + Open in browser (the app blocks downloads).
 - **Full card**: Open in browser (Chrome) → Attach, Export ZIP ✅. Paste screenshot is hidden on Android (screenshots never reach the clipboard).
 - Never push files through the card as text (token cost); evidence files belong in storage (e.g. BS4U/APEX), Claude gets text + file list only.
 
