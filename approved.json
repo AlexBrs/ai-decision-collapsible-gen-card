@@ -1,8 +1,8 @@
 {
   "product": "ai-decision-card-engine",
-  "approved": "v1.3.3",
-  "approvedOn": "2026-11-22",
+  "approved": "v1.3.4",
+  "approvedOn": "2026-11-23",
   "approvedBy": "AlexBrs",
-  "load": "https://cdn.jsdelivr.net/gh/AlexBrs/ai-decision-collapsible-gen-card@v1.3.3/ai-decision-card.js",
+  "load": "https://cdn.jsdelivr.net/gh/AlexBrs/ai-decision-collapsible-gen-card@v1.3.4/ai-decision-card.js",
   "note": "Single public source of the APPROVED engine version. Updated with every release AlexBrs approves. Never take the version from notes or memory."
 }
