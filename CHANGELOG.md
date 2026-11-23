@@ -1,5 +1,11 @@
 # **Changelog**
 
+## **v1.3.4 — 2026-11-23**
+
+- **Version in the card header** (AlexBrs card ClaudeSetup_ADC_VERSION_SOURCE): the label above the reference ID now reads **AiDecisionCard-ver1.3.4:** — an old engine is visible at a glance.
+- The approved version is also published as `approved.json` in this repo (chats without AlexBrs's PC read it there).
+- Answers JSON unchanged.
+
 ## **v1.3.3 — 2026-11-22**
 
 - **Recording is back** (it was wrongly removed in v1.3.2 — AlexBrs never asked for that). One mic button per comment box, labelled by device:
