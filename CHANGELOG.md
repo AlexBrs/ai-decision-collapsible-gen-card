@@ -5,6 +5,7 @@
 - **Export buttons** (AlexBrs mockups 23/11/2026): main button **Export answers (ZIP+JSON)**; the "Ready to export" window has **Cancel · {..} Only JSON · Export answers (ZIP)** (same ZIP icon as before).
 - **Only JSON**: copies the answers JSON to the clipboard and shows **✓ JSON Copied to clipboard** — no download. If attached files exist, the window warns that they are not included. If copying is blocked, the JSON is shown and selected with a hint instead of a false "copied".
 - After export: **Copy JSON {..}** (copy icon), **Download JSON {..}** and **Download Markdown (MD)** (download icon). Copy JSON also confirms with ✓.
+- These three buttons sit on the **Answer payload** title row, above the JSON (AlexBrs QA 23/11/2026: the confirmation was off-screen). The message (**✓ JSON Copied to clipboard**, **✓ Download started**, or the copy-blocked hint) appears right next to the buttons, and Only JSON scrolls to that panel.
 - Answers JSON unchanged.
 
 ## **v1.3.4 — 2026-11-23**
