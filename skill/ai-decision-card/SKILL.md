@@ -51,7 +51,7 @@ release is a CANDIDATE until AlexBrs approves it there - name it and ask, never 
 |---|---|---|
 | `id` (card) | `<PROJECT>_<TOPIC>`, echoed as `artifact_id`; names the export ZIP | — |
 | `title` | Card header title | none |
-| `ref` | Reference ID under the title, shown (v1.2.2+) under a label line **AiDecisionCard:** (Alex, 08/11/2026, global); echoed as `card_ref`: `AB_YYYYMMDD_HHMM_ADC_<PROJECT>_<TOPIC>` (keep YYYYMMDD) | none |
+| `ref` | Reference ID under the title, shown under a label line **AiDecisionCard-ver<engine version>:** (Alex, 08/11/2026 + version since v1.3.4, global); echoed as `card_ref`: `AB_YYYYMMDD_HHMM_ADC_<PROJECT>_<TOPIC>` (keep YYYYMMDD) | none |
 | `<PROJECT>` | Short session project name (AB_31102026140000): `Xlsx2Req` for RDW_EXCEL2REQ, `Checkpoint` for RDW_CHECKPOINT_OIC, `ClaudeSetup` for Claude environment work | — |
 | `lang` | `en` for technical sessions, `he` (RTL) for personal/admin sessions, per Alex's language rule | `en` |
 | `who` | Multi-user: required name/ID → `respondent` + ZIP name | 0 |
@@ -97,9 +97,9 @@ Write good cards:
 File names (v1.2.4+, Alex 08/11/2026, global): every card file starts with `AiDecisionCard_` — Save as HTML file `AiDecisionCard_<card id>_<YYYYMMDD>_<HHMMSS>.html`, ZIP export `AiDecisionCard_<card id>[_<respondent>]_<YYYYMMDD>_<HHMMSS>.zip`, render.js page `AiDecisionCard_<card id>_<YYYYMMDD>_<HHMMSS>.html` (env `AIDC_PREFIX` overrides; empty = none). Don't rename these files by hand.
 - Multi-line comment fields (Enter / Shift+Enter = new line, **Ctrl+Enter = submit**), resize corner, red ✱ on required items.
 - **Open in browser** opens the same card with his current answers in Chrome (GitHub Pages viewer; data stays in the link's `#` part).
-- **Dictation**: chat card → Win+H (the chat sandbox blocks the microphone); browser page → Dictate button, stopped automatically on submit.
+- **Dictation**: one mic button per comment box — **Tap mic on keyboard** (phone) / **Win+H** (Windows) / Dictate (Mac). Where the card can record (browser page over https) it records (Listening… + red stop, stopped automatically on submit); in chat cards it puts the cursor in the box for the keyboard mic / Win+H.
 - **Files and screenshots**:
-  - in a chat card, Attach only *lists* the files (`delivery: "chat"`), and he pastes or drops them into the chat after submitting;
+  - in a chat card, Attach only *lists* the files (`delivery: "chat"`), and he adds them to the chat with **+** (or pastes/drops them) after submitting;
   - in the browser page, Attach, Paste screenshot, Capture screen and Ctrl+V add files; **Export answers (ZIP)** downloads ONE ZIP: `answers.json`, `answers.md`, `files/*` (`delivery: "zip"`, `saved_as`). He attaches the ZIP to the chat.
 - Dialogs: "Required information missing" (name/ID box, Go to Qx) → "Ready to export / submit" summary with an editable file name. 1-question chat cards submit at once.
 
