@@ -7,7 +7,11 @@ description: "Ask Alex every question that has answer options as an AiDecisionCa
 
 Engine: public repo `AlexBrs/ai-decision-collapsible-gen-card`. **This file lives in that repo and
 is tagged with the engine, so the skill and the engine always match.** Never name a version here:
-read the APPROVED one with `node ~/.claude/tools/approved.js get ai-decision-card-engine`. A newer
+read the APPROVED one:
+1. On AlexBrs's PC: `node ~/.claude/tools/approved.js get ai-decision-card-engine` (the master).
+2. Anywhere else (a chat without his PC): fetch `https://raw.githubusercontent.com/AlexBrs/ai-decision-collapsible-gen-card/main/approved.json` and use its `approved` tag / `load` URL.
+3. **Never take the version from memory, notes or an earlier chat** — that is how a card ran 1.3.0 after 1.3.3 was released (23/11/2026). If neither source is reachable, say so and ask.
+Every release updates BOTH the PC registry and `approved.json`, and the release report states where it is published and which places pick it up automatically. A newer
 release is a CANDIDATE until AlexBrs approves it there - name it and ask, never adopt it silently. Local clone (Windows): `C:\AlexB\GitHub\ai-decision-collapsible-gen-card`. Schemas: `schema/input.schema.json`, `schema/output.schema.json`. Installed copies elsewhere are DERIVATIVES of this file and may lag; this one is authoritative.
 
 **Golden rule: send DATA only.** Never write the card's HTML, CSS or JS yourself, and never paste the engine. That is the whole point: a few KB per card instead of about 55 KB.
