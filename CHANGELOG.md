@@ -1,5 +1,12 @@
 # **Changelog**
 
+## **v1.3.5 — 2026-11-23**
+
+- **Export buttons** (AlexBrs mockups 23/11/2026): main button **Export answers (ZIP+JSON)**; the "Ready to export" window has **Cancel · {..} Only JSON · Export answers (ZIP)** (same ZIP icon as before).
+- **Only JSON**: copies the answers JSON to the clipboard and shows **✓ JSON Copied to clipboard** — no download. If attached files exist, the window warns that they are not included. If copying is blocked, the JSON is shown and selected with a hint instead of a false "copied".
+- After export: **Copy JSON {..}** (copy icon), **Download JSON {..}** and **Download Markdown (MD)** (download icon). Copy JSON also confirms with ✓.
+- Answers JSON unchanged.
+
 ## **v1.3.4 — 2026-11-23**
 
 - **Version in the card header** (AlexBrs card ClaudeSetup_ADC_VERSION_SOURCE): the label above the reference ID now reads **AiDecisionCard-ver1.3.4:** — an old engine is visible at a glance.
